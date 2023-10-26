@@ -16,5 +16,11 @@ namespace Coursework_3
 		{
 			InitializeComponent();
 		}
+
+		private void входToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			LogIn_Form logInForm = new LogIn_Form();
+			logInForm.ShowDialog();
+		}
 	}
 }

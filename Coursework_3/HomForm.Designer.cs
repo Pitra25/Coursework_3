@@ -30,6 +30,7 @@
 		{
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.главноеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.входToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -45,9 +46,18 @@
 			// 
 			// главноеToolStripMenuItem
 			// 
+			this.главноеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.входToolStripMenuItem});
 			this.главноеToolStripMenuItem.Name = "главноеToolStripMenuItem";
 			this.главноеToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
 			this.главноеToolStripMenuItem.Text = "Главное";
+			// 
+			// входToolStripMenuItem
+			// 
+			this.входToolStripMenuItem.Name = "входToolStripMenuItem";
+			this.входToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.входToolStripMenuItem.Text = "Вход";
+			this.входToolStripMenuItem.Click += new System.EventHandler(this.входToolStripMenuItem_Click);
 			// 
 			// HomForm
 			// 
@@ -70,5 +80,6 @@
 
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem главноеToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem входToolStripMenuItem;
 	}
 }
