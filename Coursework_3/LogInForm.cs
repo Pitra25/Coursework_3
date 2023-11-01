@@ -17,7 +17,6 @@ namespace Coursework_3
 		public LogIn_Form()
 		{
 			InitializeComponent();
-			Login_Start();
 		}
 
 		static BD_Connection db = new BD_Connection();
@@ -44,20 +43,52 @@ namespace Coursework_3
 			if (login != " " && pass1 != " ")
 			{
 				//command_per = "SELECT * FROM `User` WHERE `Login` = @uL AND `Password` = @uP";
-				command = new MySqlCommand("SELECT * FROM `User` WHERE `Login` = @uL AND `Password` = @uP", db.getConnection());
+
+				command = new MySqlCommand("SELECT * FROM `Users` WHERE `id_Login` = @uL AND `id_Password` = @uP", db.getConnection());
 				command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
 				command.Parameters.Add("@up", MySqlDbType.VarChar).Value = pass1;
 
 				adapter.SelectCommand = command;
 				adapter.Fill(dataTable);
 
+				Console.WriteLine(adapter);
+
 				if (dataTable.Rows.Count > 0)
-					MessageBox.Show("Yes");
+				{
+					MessageBox.Show($"С возвращение {login}.", $"{login}", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+					if(login == "ADMIN")
+					{
+						HomForm hom = new HomForm();
+						Console.WriteLine(hom.menuStrip_Hom.Items.Find("Администратор", true));
+					}
+					this.Hide();
+				}
 				else
 					MessageBox.Show("Неправильный логин или пароль.", "Error");
 			}
 			else
 				MessageBox.Show("Пароли несовпадает.", "Error");
+		}
+
+		/*private Boolean IsUserExist()
+		{
+			command_per = "SELECT * FROM `User` WHERE `Login` = @uL";
+
+			command = new MySqlCommand("SELECT * FROM `User` WHERE `Login` = @uL", db.getConnection());
+			command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = Login_Field.Text;
+
+			adapter.SelectCommand = command;
+			adapter.Fill(dataTable);
+
+			Console.WriteLine(dataTable);
+
+			if (dataTable.Rows.Count > 0)
+			{
+				MessageBox.Show("Этот логин занят");
+				return true;
+			}
+			else
+				return false;
 		}
 
 		private void Name_Field_Leave(object sender, EventArgs e)
@@ -108,14 +139,13 @@ namespace Coursework_3
 				Login_Field.ForeColor = Color.Gray;
 			}
 		}
-
 		private void label_registration_btn_Click(object sender, EventArgs e)
 		{
 			label_Nameblock.Text = "Регистрация";
 			label_Name.Visible = true;
 			Name_Field.Visible = true;
 			Last_Name_Field.Visible = true;
-			label_LastName.Visible = true;
+			label_LastName.Visible = true; *
 
 			label_Login.Visible = true;
 			label_Login.Location = new Point(26, 137);
@@ -131,6 +161,7 @@ namespace Coursework_3
 			label_Pass_repeat.Visible = true;
 			Pass_repeat_Field.Visible = true;
 			checkBox_Conset.Visible = true;
+			checkedListBox.Visible = true;
 
 			Registration_btn.Visible = true;
 			Registration_btn.Location = new Point(148, 214);
@@ -141,44 +172,6 @@ namespace Coursework_3
 			Login_Field.Text = "Ваш логин";
 			Pass_Field.Text = "";
 		}
-		private void label_Login_btn_Click(object sender, EventArgs e)
-		{
-			Login_Start();
-		}
-
-		private void Login_Start() 
-		{
-			label_Nameblock.Text = "Вход";
-			label_Name.Visible = false;
-			Name_Field.Visible = false;
-			label_LastName.Visible = false;
-			Last_Name_Field.Visible = false;
-			label_Pass_repeat.Visible = false;
-			Pass_repeat_Field.Visible = false;
-			checkBox_Conset.Visible = false;
-
-			Registration_btn.Visible = false;
-			LogIn_btn.Visible = true;
-			LogIn_btn.Location = new Point(148, 214);
-			label_Login_btn.Visible = false;
-			label_registration.Visible = true;
-
-			label_Login.Location = new Point(117, 20);
-			Login_Field.Location = new Point(119, 56);
-			Login_Field.Size = new Size(254, 31);
-			label_Pass.Location = new Point(117, 100);
-			Pass_Field.Location = new Point(119, 133);
-			Pass_Field.Size = new Size(254, 31);
-
-			Name_Field.Text = "Ваше имя";
-			Last_Name_Field.Text = "Ваша фамилию";
-			Login_Field.Text = "Ваш логин";
-
-			Name_Field.ForeColor = Color.Gray;
-			Last_Name_Field.ForeColor = Color.Gray;
-			Login_Field.ForeColor = Color.Gray;
-		}
-
 		private void Registration_btn_Click(object sender, EventArgs e)
 		{
 			string name = Name_Field.Text;
@@ -186,6 +179,7 @@ namespace Coursework_3
 			string login = Login_Field.Text;
 			string pass1 = Pass_Field.Text;
 			string pass2 = Pass_repeat_Field.Text;
+			string license = checkedListBox.Text;
 
 			if (Name_Field.Text == "Ваше имя")
 			{
@@ -208,50 +202,53 @@ namespace Coursework_3
 				MessageBox.Show("Введите пароль");
 				return;
 			}
-			if (checkBox_Conset.Checked == false)
+
+			if (checkedListBox.CheckOnClick)
 			{
-				MessageBox.Show("Необходимо согласие на обработкой личных данных.", "Error");
+				MessageBox.Show("Невыбрана поле", "Error");
 				return;
 			}
+
+			if (pass1 == "" || pass2 == "")
+			{
+				MessageBox.Show("Введите пароль.", "Error");
+				return;
+			}
+			if (pass1 != pass2)
+			{
+				MessageBox.Show("Пароль не совпадает.", "Error");
+				return;
+			}
+
 			if (IsUserExist())
 				return;
 
-			if (pass1 != "" && pass2 != "")
-			{
-				command = new MySqlCommand("INSERT INTO `User` (`Name`, `Last_name`, `Login`, `Password`) VALUES (@Name, @LastName, @Login, @pass)", db.getConnection());
+			command = new MySqlCommand("INSERT INTO `User` (`Name`, `Last_name`, `Login`, `Password`, `License`) VALUES (@Name, @LastName, @Login, @pass, @license)", db.getConnection());
 
-				command.Parameters.Add("@Name", MySqlDbType.VarChar).Value = name;
-				command.Parameters.Add("@LastName", MySqlDbType.VarChar).Value = lastname;
-				command.Parameters.Add("@Login", MySqlDbType.VarChar).Value = login;
-				command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = pass1;
+			command.Parameters.Add("@Name", MySqlDbType.VarChar).Value = name;
+			command.Parameters.Add("@LastName", MySqlDbType.VarChar).Value = lastname;
+			command.Parameters.Add("@Login", MySqlDbType.VarChar).Value = login;
+			command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = pass1;
+			command.Parameters.Add("@license", MySqlDbType.VarChar).Value = license;
 
-				db.OpenConnection();
+			db.OpenConnection();
 
-				if (command.ExecuteNonQuery() == 1)
-					MessageBox.Show("Аккаунт был создвн.");
-				else
-					MessageBox.Show("Аккаунт не был создан.");
+			if (command.ExecuteNonQuery() == 1)
+				MessageBox.Show("Аккаунт был создан.");
+			else
+				MessageBox.Show("Аккаунт не был создан.");
 
 				db.CloseConnection();
 			}
-
-		private Boolean IsUserExist()
-		{
-			/*command_per = "SELECT * FROM `User` WHERE `Login` = @uL";*/
-			command = new MySqlCommand("SELECT * FROM `User` WHERE `Login` = @uL", db.getConnection());
-
-			command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = Login_Field.Text;
-
-			adapter.SelectCommand = command;
-			adapter.Fill(dataTable);
-
-			if (dataTable.Rows.Count > 0)
-			{
-				MessageBox.Show("Этот логин занят");
-				return true;
-			}
 			else
-				return false;
+				MessageBox.Show("Error", "Пароль не совпадает.");
 		}
+			else
+				MessageBox.Show("Error", "Пароль не совпадает.");
+		}
+			else
+				MessageBox.Show("Error", "Пароль не совпадает.");
+		}
+
 	}
 }

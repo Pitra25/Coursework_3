@@ -17,10 +17,16 @@ namespace Coursework_3
 			InitializeComponent();
 		}
 
-		private void входToolStripMenuItem_Click(object sender, EventArgs e)
+		private void Login_ToolStrip_MenuItem_Click(object sender, EventArgs e)
 		{
 			LogIn_Form logInForm = new LogIn_Form();
 			logInForm.ShowDialog();
+		}
+
+		private void студентаToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			LogIn_People logIn_Pipel = new LogIn_People();
+			logIn_Pipel.Show();
 		}
 	}
 }

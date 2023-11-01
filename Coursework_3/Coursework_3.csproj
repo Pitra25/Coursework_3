@@ -63,6 +63,12 @@
     <Compile Include="LogInForm.Designer.cs">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogIn_People.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogIn_People.Designer.cs">
+      <DependentUpon>LogIn_People.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="HomForm.resx">
@@ -70,6 +76,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogIn_People.resx">
+      <DependentUpon>LogIn_People.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
