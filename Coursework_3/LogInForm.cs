@@ -234,9 +234,6 @@ namespace Coursework_3
 
 				db.CloseConnection();
 			}
-			else
-				MessageBox.Show("Error", "Пароль не совпадает.");
-		}
 
 		private Boolean IsUserExist()
 		{
