@@ -248,7 +248,7 @@ namespace Coursework_3
 		}
 			else
 				MessageBox.Show("Error", "Пароль не совпадает.");
-		}
+		}*/
 
 	}
 }
