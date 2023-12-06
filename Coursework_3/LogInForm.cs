@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -23,51 +24,61 @@ namespace Coursework_3
 		DataTable dataTable = new DataTable();
 		MySqlDataAdapter adapter = new MySqlDataAdapter();
 		//MySqlCommand command = new MySqlCommand(command_per, db.getConnection());
-		MySqlCommand command = new MySqlCommand();
+		MySqlCommand command;
 
-		//static private string command_per;
-
-		/* //все textbox в 1
-		 * private string name_tb;
-		private void Click_tb(object sender, EventArgs e)
-		{
-			name_tb = (sender as Button).Name;
-		}
-		*/
-
+		/*
+		 * Функция проверки на наличие пользователя в БД. 
+		 */
 		private void LogIn_btn_Click(object sender, EventArgs e)
 		{
 			string login = Login_Field.Text;
 			string pass1 = Pass_Field.Text;
-			
+
+
 			if (login != " " && pass1 != " ")
 			{
 				//command_per = "SELECT * FROM `User` WHERE `Login` = @uL AND `Password` = @uP";
-
-				command = new MySqlCommand("SELECT * FROM `Users` WHERE `id_Login` = @uL AND `id_Password` = @uP", db.getConnection());
-				command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
-				command.Parameters.Add("@up", MySqlDbType.VarChar).Value = pass1;
-
-				adapter.SelectCommand = command;
-				adapter.Fill(dataTable);
+				db.OpenConnection();
+					
+					/*
+					 * Запрос с проверкой данных из бд и из полей на форме.
+					 */
+					command = new MySqlCommand("SELECT * FROM `Users` WHERE `id_Login` = @uL AND `id_Password` = @uP", db.getConnection());
+					/* 
+					 * Присвоение значений из полей на форме и передача их в запрос к бд 
+					 */
+					command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
+					command.Parameters.Add("@up", MySqlDbType.VarChar).Value = pass1;
+			
+					adapter.SelectCommand = command;
+					adapter.Fill(dataTable);
+				db.CloseConnection();
 
 				Console.WriteLine(adapter);
 
+				/*
+				 * Проверка если ли такой пользователь в бд
+				 */
 				if (dataTable.Rows.Count > 0)
 				{
-					MessageBox.Show($"С возвращение {login}.", $"{login}", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+					HomForm hom = new HomForm();
 					if(login == "ADMIN")
 					{
-						HomForm hom = new HomForm();
-						Console.WriteLine(hom.menuStrip_Hom.Items.Find("Администратор", true));
+						MessageBox.Show($"С возвращение if {login}.", $"{login}", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+						hom.menuStrip_Hom.Items[3].Visible = true;
+						hom.menuStrip_Hom.Items[4].Visible = true;
 					}
+					else
+						MessageBox.Show($"С возвращение Else {login}.", $"{login}", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+					hom.Show();
 					this.Hide();
 				}
 				else
 					MessageBox.Show("Неправильный логин или пароль.", "Error");
 			}
 			else
-				MessageBox.Show("Пароли несовпадает.", "Error");
+				MessageBox.Show("Пароли не совпадает.", "Error");
 		}
 
 		/*private Boolean IsUserExist()
@@ -249,6 +260,5 @@ namespace Coursework_3
 			else
 				MessageBox.Show("Error", "Пароль не совпадает.");
 		}*/
-
 	}
 }
