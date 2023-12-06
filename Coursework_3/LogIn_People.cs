@@ -4,10 +4,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
+using System.Collections;
+using System.Data.SqlClient;
+using System.Data.OleDb;
 
 namespace Coursework_3
 {
@@ -16,55 +22,83 @@ namespace Coursework_3
 		public LogIn_People()
 		{
 			InitializeComponent();
+			this.StartPosition = FormStartPosition.CenterScreen;
 		}
 
-		static BD_Connection db = new BD_Connection();
-		DataTable dataTable = new DataTable();
-		MySqlDataAdapter adapter = new MySqlDataAdapter();
+		readonly static BD_Connection db = new BD_Connection();
+		DataTable dataTable;
+		MySqlDataAdapter adapter;
 		//MySqlCommand command = new MySqlCommand(command_per, db.getConnection());
-		MySqlCommand command = new MySqlCommand();
+		MySqlCommand command;
+		DataSet dataSet = new DataSet();
 
-		private void Registration_btn_Click(object sender, EventArgs e)
+		private void ImgLoader()
 		{
-			if (Educator_CheckBox.Checked)
+			try
 			{
-				Console.WriteLine("Educator_CheckBox");
-				LogIn_Educator();
+				db.OpenConnection();
+
+				command = new MySqlCommand("SELECT `imgid`, `imagepath` FROM `SaveImg` ORDER BY `imgid`", db.getConnection());
+
+				command.ExecuteNonQuery();
+				dataTable = new DataTable();
+
+				adapter.Fill(dataSet, "imagepath");
+				int c = dataSet.Tables["BLOBTest"].Rows.Count;
+
+				if (c > 0)
+				{
+					//BLOB is read into Byte array, then used to construct MemoryStream,
+					//then passed to PictureBox.
+
+					Byte[] byteBLOBData = new Byte[0];
+					byteBLOBData = (Byte[])(dataSet.Tables["SaveImg"].Rows[c - 1]["SaveImg"]);
+					MemoryStream stmBLOBData = new MemoryStream(byteBLOBData);
+					pictureBox1.Image = Image.FromStream(stmBLOBData);
+				}
+
+				db.CloseConnection();
 			}
-			else if (Student_CheckBox.Checked)
+			catch(Exception ex)
 			{
-				Console.WriteLine("Student_CheckBox");
-				LogIn_Student();
-			}
-			else
-			{
-				MessageBox.Show("Выберете кого хотите добавить", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show(ex.Message);
 			}
 		}
+		private void RegistrationBtn_Click(object sender, EventArgs e)
+		{
+			if (EducatorCheckBox.Checked)
+				LogInEmployee();
+			else if (StudentCheckBox.Checked)
+				LogInUsers();
+			else
+				MessageBox.Show("Выберете кого хотите добавить", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
 
-		private void LogIn_Educator()
+		private void LogInEmployee()
 		{
 			string name = Name_Field.Text;
-			string lastname = LastName_Field.Text;
+			string lastNamed = LastName_Field.Text;
 			string productName = Patronymic_Field.Text;
 			string position = Position_Field.Text;
+			string email = Email_Field.Text;
 			string login = Login_Field.Text;
 			string pass = Password_Field.Text;
 			string repeat_pass = Repeat_Password_Field.Text;
-			string money_field = Money_Field.Text;
-			string cabinet = Cabinet_FIeld.Text;
-			string namtional = Nationality_Field.Text;
-			string paassport_series = Passport_Series.Text;
-			string passport_number = Passport_Number.Text;
-			string passpot_img = Img_Field.Text;
-			string email = Email_FIeld.Text;
+			string Nationality = Nationality_Field.Text;
+			string Number = Number_Field.Text;
+			string Series = Series_Field.Text;
 
+			//var passport_img = pictureBox1.Image;
+			
+			/*
+			 * Проверка на заполненность полей.
+			 */
 			if (name == "")
 			{
 				MessageBox.Show("Введите имя.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			if (lastname  == "")
+			if (lastNamed == "")
 			{
 				MessageBox.Show("Введите фамилию.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
@@ -74,97 +108,169 @@ namespace Coursework_3
 				MessageBox.Show("Введите логин.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			if (email == "")
+			if (Number == "" | Series == "" )
 			{
-				MessageBox.Show("Введите почту.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Поля паспорта пусты.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			if (pass == "" || repeat_pass == "" || pass != repeat_pass)
+			if (pass == "" | repeat_pass == "" | pass != repeat_pass)
 			{
 				MessageBox.Show("Пароль не совпадает", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			if (namtional == "" || paassport_series == "" || passport_number == "" || passpot_img == "")
+			if (IsUserExist("Employee", login))
+				return;
+
+			//string imagename = Path.GetFileName(pictureBox1.ProductName);
+			//var imagepath = pictureBox1.Image;
+
+			/*try
 			{
-				MessageBox.Show("Заполните поля паспорта.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return;
+				command = new MySqlCommand("INSERT INTO BLOBTest (BLOBData) VALUES (@BLOBData)", db.getConnection());
+
+				//Save image from PictureBox into MemoryStream object.
+				MemoryStream ms = new MemoryStream();
+				pictureBox1.Image.Save(ms, ImageFormat.Jpeg);
+
+				//Read from MemoryStream into Byte array.
+				Byte[] bytBLOBData = new Byte[ms.Length];
+				ms.Position = 0;
+				ms.Read(bytBLOBData, 0, Convert.ToInt32(ms.Length));
+
+				//Create parameter for insert statement that contains image.
+				SqlParameter prm = new SqlParameter("@BLOBData", SqlDbType.VarBinary, bytBLOBData.Length, ParameterDirection.Input, false,
+				0, 0, null, DataRowVersion.Current, bytBLOBData);
+				command.Parameters.Add(prm);
+
+				db.OpenConnection();
+				command.ExecuteNonQuery();
+				db.CloseConnection();
 			}
-			if (IsUserExist())
-				return;
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}*/
 
-			command = new MySqlCommand("", db.getConnection());
+			//Console.WriteLine("imagepath: ", imagepath);
+			
+			try
+			{
+				command = new MySqlCommand("" +
+				"INSERT INTO `Employee` " +
+					"(`id`, `Name`, `Surname`, `Patronymic`, `Position`, `Nationality`, `Passport_number`, `Passport_series`, `Email`, `Login`, `Password`, `Employee`) " +
+					"VALUES (NULL, @name, @lastNamed, @productName, @position, @nat, @number, @Series, @email, @login, @pass, @employee);" +
+				"INSERT INTO `SaveImg` (`id`, `imagename`, `iamgetype`, `imagepath`) " +
+					"VALUES (NULL, @imgname, @imagetype, @BLOBData);",
+				db.getConnection());
+								
+				command.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
+				command.Parameters.Add("@lastNamed", MySqlDbType.VarChar).Value = lastNamed;
+				command.Parameters.Add("@productName", MySqlDbType.VarChar).Value = productName;
+				command.Parameters.Add("@position", MySqlDbType.VarChar).Value = position;
+				command.Parameters.Add("@nat", MySqlDbType.VarChar).Value = Nationality;
+				command.Parameters.Add("@number", MySqlDbType.VarChar).Value = Number;
+				command.Parameters.Add("@Series", MySqlDbType.VarChar).Value = Series;
+				command.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
+				command.Parameters.Add("@login", MySqlDbType.VarChar).Value = login;
+				command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = pass;
+				command.Parameters.Add("@employee", MySqlDbType.VarChar).Value = "Сотрудник";
 
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = name;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = lastname;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = productName;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = position;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = login;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = pass;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = money_field;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = cabinet;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = namtional;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = paassport_series;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = passport_number;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = passpot_img;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = email;
+				command.Parameters.Add("@imgname", MySqlDbType.VarChar).Value = name + ". Сотрудник.";
+				command.Parameters.Add("@imagetype", MySqlDbType.VarChar).Value = "Jpeg";
 
-			db.OpenConnection();
+				MemoryStream memory = new MemoryStream();
+				pictureBox1.Image.Save(memory, ImageFormat.Jpeg);
 
-			if (command.ExecuteNonQuery() == 1)
-				MessageBox.Show("Аккаунт был создан.");
-			else
-				MessageBox.Show("Аккаунт не был создан.");
+				//Сохраните изображение из PictureBox в объект MemoryStream.
+				Byte[] bytBLOBData = new Byte[memory.Length];
+				memory.Position = 0;
+				memory.Read(bytBLOBData, 0, Convert.ToInt32(memory.Length));
 
-			db.CloseConnection();
+				//Создайте параметр для оператора вставки, содержащий изображение.
+				MySqlParameter Parameter = new MySqlParameter("@BLOBData", MySqlDbType.LongBlob, bytBLOBData.Length, ParameterDirection.Input, false,
+					0, 0, null, DataRowVersion.Current, bytBLOBData);
+				
+				command.Parameters.Add(Parameter);
+
+				db.OpenConnection(); 
+
+				if (command.ExecuteNonQuery() == 2)
+					MessageBox.Show("Аккаунт был создан.");
+				else
+					MessageBox.Show("Аккаунт не был создан.");
+
+				db.CloseConnection();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
 
 		}
-		private void LogIn_Student()
+
+		private void LogInUsers()
 		{
 			string name = Name_Field.Text;
-			string lastname = LastName_Field.Text;
-			string productName = Patronymic_Field.Text;
-			string login = Login_Field.Text;
+			string lastNamed = LastName_Field.Text;
+			string Patronymic = Patronymic_Field.Text;
+			string Login = Login_Field.Text;
 			string pass = Password_Field.Text;
-			string repeat_pass = Repeat_Password_Field.Text;
-			string group = Group_Field.Text;
-			string cours = Course_FIeld.Text;
-
+			string passR = Repeat_Password_Field.Text;
+			
+			/*
+			 * Проверка на заполненность полей.
+			 */
 			if (name == "")
 			{
 				MessageBox.Show("Введите имя.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			if (lastname == "")
+			if (lastNamed == "")
 			{
 				MessageBox.Show("Введите фамилию.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			if (login == "")
+			if (pass != passR)
 			{
-				MessageBox.Show("Введите логин.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Пароли не совпадают", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			if (pass == "" || repeat_pass == "" || pass != repeat_pass)
-			{
-				MessageBox.Show("Пароль не совпадает", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			if (IsUserExist("User", name))
 				return;
-			}
-			if (IsUserExist())
-				return;
-
-			command = new MySqlCommand("", db.getConnection());
-
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = name;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = lastname;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = productName;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = login;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = pass;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = group;
-			command.Parameters.Add("", MySqlDbType.VarChar).Value = cours;
 
 			db.OpenConnection();
+			command = new MySqlCommand("INSERT INTO `User` " +
+				"(`id`, `Login`, `Password`, `License`, `Name`, `Last_name`, `Patronymic`) " +
+					"VALUES (NULL, @login, @pass,@user ,@name, @lastNamed, @Patronymic);" +
+				"INSERT INTO `SaveImg` (`id`, `imagename`, `iamgetype`, `imagepath`) " +
+					"VALUES (NULL, @imgname, @imagetype, @BLOBData);",
+				db.getConnection());
 
-			if (command.ExecuteNonQuery() == 1)
+			command.Parameters.Add("@login", MySqlDbType.VarChar).Value = Login;
+			command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = pass;
+			command.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
+			command.Parameters.Add("@lastNamed", MySqlDbType.VarChar).Value = lastNamed;
+			command.Parameters.Add("@Patronymic", MySqlDbType.VarChar).Value = Patronymic;
+			command.Parameters.Add("@user", MySqlDbType.VarChar).Value = "Клиент";
+
+			command.Parameters.Add("@imgname", MySqlDbType.VarChar).Value = name + ". Клиент.";
+			command.Parameters.Add("@imagetype", MySqlDbType.VarChar).Value = "Jpeg";
+
+			MemoryStream memory = new MemoryStream();
+			pictureBox1.Image.Save(memory, ImageFormat.Jpeg);
+
+			//Сохраните изображение из PictureBox в объект MemoryStream.
+			Byte[] bytBLOBData = new Byte[memory.Length];
+			memory.Position = 0;
+			memory.Read(bytBLOBData, 0, Convert.ToInt32(memory.Length));
+
+			//Создайте параметр для оператора вставки, содержащий изображение.
+			MySqlParameter Parameter = new MySqlParameter("@BLOBData", MySqlDbType.LongBlob, bytBLOBData.Length, ParameterDirection.Input, false,
+				0, 0, null, DataRowVersion.Current, bytBLOBData);
+
+			command.Parameters.Add(Parameter);
+
+			if (command.ExecuteNonQuery() == 2)
 				MessageBox.Show("Аккаунт был создан.");
 			else
 				MessageBox.Show("Аккаунт не был создан.");
@@ -172,36 +278,68 @@ namespace Coursework_3
 			db.CloseConnection();
 		}
 
-		private Boolean IsUserExist()
+		/*
+		 * Проверка есть ли в бд пользователь с таким же ником
+		 */
+		private Boolean IsUserExist(string user, string nameF)
 		{
-			/*command_per = "SELECT * FROM `User` WHERE `Login` = @uL";*/
-
-			command = new MySqlCommand("SELECT * FROM `User` WHERE `Login` = @uL", db.getConnection());
-
-			command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = Login_Field.Text;
-
-			adapter.SelectCommand = command;
-			adapter.Fill(dataTable);
-
-			Console.WriteLine(dataTable);
-
-			if (dataTable.Rows.Count > 0)
+			/*BD_Connection db = new BD_Connection();
+			DataTable dataTable = new DataTable();
+			MySqlDataAdapter adapter_loc = new MySqlDataAdapter();
+			//MySqlCommand command = new MySqlCommand(command_per, db.getConnection());
+			MySqlCommand command_loc;*/
+			try
 			{
-				MessageBox.Show("Этот логин занят");
-				return true;
+				db.OpenConnection();
+				if (user == "User")
+				{
+					command = new MySqlCommand("SELECT * FROM `User` WHERE `Login` = @log",
+						db.getConnection());
+					command.Parameters.Add("@log", MySqlDbType.VarChar).Value = nameF;
+				}
+				else if (user == "Employee")
+				{
+					
+					command = new MySqlCommand("SELECT * FROM `Employee` WHERE `Name` = @name",
+							db.getConnection());
+					command.Parameters.Add("@name", MySqlDbType.VarChar).Value = nameF;
+				}
+
+				adapter.SelectCommand = command;
+				adapter.Fill(dataTable);
+				db.CloseConnection();
+
+				Console.WriteLine(dataTable);
+				if (dataTable.Rows.Count > 0)
+				{
+					MessageBox.Show("Этот логин занят");
+					return true;
+				}
+				else
+					return false;
 			}
-			else
+			catch(Exception ex)
+			{
+				MessageBox.Show($"Этот логин занят \n {ex.Message}");
 				return false;
+			}
+
 		}
 
-		private void Student_CheckBox_MouseClick(object sender, MouseEventArgs e)
+		private void StudentCheckBox_MouseClick(object sender, MouseEventArgs e)
 		{
-			Educator_CheckBox.Checked = false;
+			EducatorCheckBox.Checked = false;
+		}
+		private void EducatorCheckBox_MouseClick(object sender, MouseEventArgs e)
+		{
+			StudentCheckBox.Checked = false;
 		}
 
-		private void Educator_CheckBox_MouseClick(object sender, MouseEventArgs e)
+		private void AttachImgBtn_Click(object sender, EventArgs e)
 		{
-			Student_CheckBox.Checked = false;
+			LoadIImg load_Img = new LoadIImg();
+			load_Img.Show();
+			this.Close();
 		}
 	}
 }
