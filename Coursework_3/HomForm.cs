@@ -156,34 +156,32 @@ namespace Coursework_3
 			}
 		}
 
+		//int id_card = Convert.ToInt32(id_card1);
 
-		Books_Form books_Form_cart = new Books_Form();
+		//Books_Form books_Form_cart = new Books_Form();
 		private void MoreBtn1Cart_Click(object sender, EventArgs e)
 		{
-			Books_Form();
-			books_Form_cart.id_cards = short.Parse(id_card1);
+			Books_Form books_Form = new Books_Form();
+			books_Form.id_cards = short.Parse(id_card1);
 			Console.WriteLine(id_card1);
+			books_Form.Show();
 		}
 		private void MoreBtn2Cart_Click(object sender, EventArgs e)
 		{
-			Books_Form();
-			books_Form_cart.id_cards = short.Parse(id_card2);
+			Books_Form books_Form = new Books_Form();
+			books_Form.id_cards = short.Parse(id_card2);
 			Console.WriteLine(id_card2);
+			books_Form.Show();
 		}
 		private void MoreBtn3Cart_Click(object sender, EventArgs e)
 		{
-			Books_Form();
-			books_Form_cart.id_cards = short.Parse(id_card3);
-			Console.WriteLine(id_card3);
-		}
-		private void Books_Form()
-		{
 			Books_Form books_Form = new Books_Form();
-			books_Form.ShowDialog();
+			books_Form.id_cards = short.Parse(id_card3);
+			Console.WriteLine(id_card3);
+			books_Form.Show();
 		}
+	
 
-	
-	
 
 		private void Login_ToolStrip_MenuItem_Click(object sender, EventArgs e)
 		{

@@ -366,11 +366,11 @@
 			// 
 			// label3
 			// 
-			this.label3.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label3.Dock = System.Windows.Forms.DockStyle.Right;
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label3.Location = new System.Drawing.Point(141, 0);
+			this.label3.Location = new System.Drawing.Point(165, 0);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(141, 75);
+			this.label3.Size = new System.Drawing.Size(117, 75);
 			this.label3.TabIndex = 1;
 			this.label3.Text = "label3";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -381,7 +381,7 @@
 			this.Label_Author_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.Label_Author_1.Location = new System.Drawing.Point(0, 0);
 			this.Label_Author_1.Name = "Label_Author_1";
-			this.Label_Author_1.Size = new System.Drawing.Size(141, 75);
+			this.Label_Author_1.Size = new System.Drawing.Size(159, 75);
 			this.Label_Author_1.TabIndex = 0;
 			this.Label_Author_1.Text = "Author";
 			this.Label_Author_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -498,11 +498,11 @@
 			// 
 			// label7
 			// 
-			this.label7.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label7.Dock = System.Windows.Forms.DockStyle.Right;
 			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label7.Location = new System.Drawing.Point(141, 0);
+			this.label7.Location = new System.Drawing.Point(165, 0);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(141, 75);
+			this.label7.Size = new System.Drawing.Size(117, 75);
 			this.label7.TabIndex = 1;
 			this.label7.Text = "label7";
 			this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -513,7 +513,7 @@
 			this.Label_Author_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.Label_Author_3.Location = new System.Drawing.Point(0, 0);
 			this.Label_Author_3.Name = "Label_Author_3";
-			this.Label_Author_3.Size = new System.Drawing.Size(141, 75);
+			this.Label_Author_3.Size = new System.Drawing.Size(159, 75);
 			this.Label_Author_3.TabIndex = 0;
 			this.Label_Author_3.Text = "Author";
 			this.Label_Author_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -617,11 +617,11 @@
 			// 
 			// label4
 			// 
-			this.label4.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label4.Dock = System.Windows.Forms.DockStyle.Right;
 			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label4.Location = new System.Drawing.Point(141, 0);
+			this.label4.Location = new System.Drawing.Point(165, 0);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(141, 75);
+			this.label4.Size = new System.Drawing.Size(117, 75);
 			this.label4.TabIndex = 1;
 			this.label4.Text = "label4";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -632,7 +632,7 @@
 			this.Label_Author_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.Label_Author_2.Location = new System.Drawing.Point(0, 0);
 			this.Label_Author_2.Name = "Label_Author_2";
-			this.Label_Author_2.Size = new System.Drawing.Size(141, 75);
+			this.Label_Author_2.Size = new System.Drawing.Size(159, 75);
 			this.Label_Author_2.TabIndex = 0;
 			this.Label_Author_2.Text = "Author";
 			this.Label_Author_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
