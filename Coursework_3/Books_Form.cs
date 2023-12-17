@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Timers;
 using System.IO;
+using System.Threading;
 
 namespace Coursework_3
 {
@@ -19,8 +20,7 @@ namespace Coursework_3
 		{
 			InitializeComponent();
 			this.StartPosition = FormStartPosition.CenterScreen;
-			Function_Loading_Cart();
-			ImgLoader();
+			//Function_Loading_Cart();
 		}
 		//private static System.Timers.Timer aTimer;
 
@@ -30,17 +30,37 @@ namespace Coursework_3
 		MySqlCommand command;
 		DataSet dataSet = new DataSet();
 
-		public short id_cards;
+		public int id_cards;
 
+		public string LabelText
+		{
+			get{
+				return this.Name_Avtor_label.Text;
+			}
+			set
+			{
+				this.Name_Avtor_label.Text = value;
+			}
+		}
+
+		private void timer_Tick(object sender, EventArgs e)
+		{
+			Console.WriteLine("Timer start");
+			Function_Loading_Cart();
+			timer.Stop();
+		}
 
 		private void Function_Loading_Cart()
 		{
-			//int id_card = id_cards;
-
-			Console.WriteLine("id_cards:  " + id_cards);
-			//Console.WriteLine("id_card:  " + id_card);
 			try
 			{
+				Console.WriteLine("id_cards:  " + id_cards);
+				if (id_cards == 0)
+				{
+					MessageBox.Show("Книга не обнаружена.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					return;
+				}
+
 				db.OpenConnection();
 				command = new MySqlCommand("SELECT * FROM `Books` WHERE `id` =  @id", db.getConnection());
 				command.Parameters.Add("@id", MySqlDbType.Int32).Value = id_cards;
@@ -52,6 +72,7 @@ namespace Coursework_3
 				db.CloseConnection();
 
 				Function_Loading_Cart2();
+				ImgLoader();
 			}
 			catch(Exception ex)
 			{
@@ -86,7 +107,7 @@ namespace Coursework_3
 					
 					//Отладка загрузки отображения картинок
 					adapter.Fill(dataTable);
-					dataGridView2.DataSource = dataTable;
+					dataGridView1.DataSource = dataTable;
 				}
 			}
 			catch (Exception ex)
@@ -99,8 +120,6 @@ namespace Coursework_3
 		{
 			try
 			{
-				//ImgLoader();
-
 				db.OpenConnection();
 				command = new MySqlCommand("SELECT `Name`,`Avtor`,`About_author`,`About_book`,`availability` " +
 					"FROM `Books` WHERE `id` = @id_Img", db.getConnection());
@@ -116,10 +135,10 @@ namespace Coursework_3
 				dataGridView1.DataSource = dataTable;
 
 				Name_book_label.Text = dataGridView1[0, 0].Value.ToString();
-				Name_Avtor_label.Text = dataGridView1[0, 1].Value.ToString();
-				About_book.Text = dataGridView1[0, 2].Value.ToString();
-				About_author.Text = dataGridView1[0, 3].Value.ToString();
-				label_number.Text = dataGridView1[0, 4].Value.ToString();
+				Name_Avtor_label.Text = dataGridView1[1, 0].Value.ToString();
+				About_author.Text = dataGridView1[2, 0].Value.ToString();
+				About_book.Text = dataGridView1[3, 0].Value.ToString();
+				label_number.Text = dataGridView1[4, 0].Value.ToString();
 
 			}
 			catch (Exception ex)
