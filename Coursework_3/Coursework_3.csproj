@@ -14,6 +14,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -156,6 +171,12 @@
       <DependentUpon>Books_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="BD_Connection.cs" />
+    <Compile Include="Catalog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalog.Designer.cs">
+      <DependentUpon>Catalog.cs</DependentUpon>
+    </Compile>
     <Compile Include="HomForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,8 +201,26 @@
     <Compile Include="LogIn_People.Designer.cs">
       <DependentUpon>LogIn_People.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewBooks.Designer.cs">
+      <DependentUpon>NewBooks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Schedule.Designer.cs">
+      <DependentUpon>Schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartForm.Designer.cs">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +229,9 @@
     </Compile>
     <EmbeddedResource Include="Books_Form.resx">
       <DependentUpon>Books_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalog.resx">
+      <DependentUpon>Catalog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomForm.resx">
       <DependentUpon>HomForm.cs</DependentUpon>
@@ -203,10 +245,19 @@
     <EmbeddedResource Include="LogIn_People.resx">
       <DependentUpon>LogIn_People.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewBooks.resx">
+      <DependentUpon>NewBooks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schedule.resx">
+      <DependentUpon>Schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartForm.resx">
+      <DependentUpon>StartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users_Form.resx">
       <DependentUpon>Users_Form.cs</DependentUpon>
@@ -231,6 +282,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\icon_books\books_Library_creative_icon_fl.jpeg" />
+    <Content Include="images\icon_books\Library_book_circular_creative.jpeg" />
+    <Content Include="images\icon_books\Library_circular_creative_icon %281%29.jpeg" />
+    <Content Include="images\icon_books\Library_circular_creative_icon %282%29.jpeg" />
+    <Content Include="images\icon_books\Library_circular_creative_icon.jpeg" />
+    <Content Include="images\icon_books\загрузка.jpeg" />
     <Content Include="images\interface\cross-square.png" />
     <Content Include="images\interface\Close-darck.png" />
     <Content Include="images\interface\expand-window.png" />
@@ -249,9 +306,28 @@
     <Content Include="images\logo\favicon-16x16.png" />
     <Content Include="images\logo\favicon-32x32.png" />
     <Content Include="images\logo\favicon.ico" />
+    <None Include="Resources\Library_circular_creative_icon.jpeg" />
+    <None Include="Resources\Library_circular_creative_icon %281%29.jpeg" />
+    <None Include="Resources\Library_circular_creative_icon %282%29.jpeg" />
+    <None Include="Resources\Library_book_circular_creative.jpeg" />
+    <None Include="Resources\books_Library_creative_icon_fl.jpeg" />
+    <None Include="Resources\Library_circular_creative_icon %283%29.jpeg" />
+    <None Include="Resources\beautiful_flat-style_logo_desi.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\interface\darck\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

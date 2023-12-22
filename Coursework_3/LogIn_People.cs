@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Collections;
-using System.Data.SqlClient;
 using System.Data.OleDb;
 
 namespace Coursework_3
@@ -54,7 +53,7 @@ namespace Coursework_3
 					Byte[] byteBLOBData = new Byte[0];
 					byteBLOBData = (Byte[])(dataSet.Tables["SaveImg"].Rows[c - 1]["SaveImg"]);
 					MemoryStream stmBLOBData = new MemoryStream(byteBLOBData);
-					pictureBox1.Image = Image.FromStream(stmBLOBData);
+					pictureBox.Image = Image.FromStream(stmBLOBData);
 				}
 
 				db.CloseConnection();
@@ -179,7 +178,7 @@ namespace Coursework_3
 				command.Parameters.Add("@imagetype", MySqlDbType.VarChar).Value = "Jpeg";
 
 				MemoryStream memory = new MemoryStream();
-				pictureBox1.Image.Save(memory, ImageFormat.Jpeg);
+				pictureBox.Image.Save(memory, ImageFormat.Jpeg);
 
 				//Сохраните изображение из PictureBox в объект MemoryStream.
 				Byte[] bytBLOBData = new Byte[memory.Length];
@@ -257,7 +256,7 @@ namespace Coursework_3
 			command.Parameters.Add("@imagetype", MySqlDbType.VarChar).Value = "Jpeg";
 
 			MemoryStream memory = new MemoryStream();
-			pictureBox1.Image.Save(memory, ImageFormat.Jpeg);
+			pictureBox.Image.Save(memory, ImageFormat.Jpeg);
 
 			//Сохраните изображение из PictureBox в объект MemoryStream.
 			Byte[] bytBLOBData = new Byte[memory.Length];

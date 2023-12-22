@@ -20,7 +20,6 @@ namespace Coursework_3
 		{
 			InitializeComponent();
 			this.StartPosition = FormStartPosition.CenterScreen;
-			//Function_Loading_Cart();
 		}
 		//private static System.Timers.Timer aTimer;
 
