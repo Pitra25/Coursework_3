@@ -24,7 +24,6 @@ namespace Coursework_3
 			this.Size = new Size(969, 589);
 			Function_Loading_Cart();
 		}
-		private static System.Timers.Timer aTimer;
 
 		static BD_Connection db = new BD_Connection();
 		DataTable dataTable = new DataTable();
@@ -181,21 +180,24 @@ namespace Coursework_3
 			books_Form.Show();
 		}
 	
-
-
 		private void Login_ToolStrip_MenuItem_Click(object sender, EventArgs e)
 		{
 			LogIn_Form logInForm = new LogIn_Form();
-			logInForm.Show();
+			logInForm.ShowDialog();
 		}
 		private void User_ToolStripMenuItem1_Click(object sender, EventArgs e)
 		{
-			Users_Form users = new Users_Form();
-			users.Show();
+			LogIn_People logIn_People = new LogIn_People();
+			logIn_People.ShowDialog();
 		}
 		private void TFunction_Loading_Cart(object sender, EventArgs e)
 		{
 			Function_Loading_Cart();
+		}
+
+		private void HomForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			System.Environment.Exit(0);
 		}
 
 		/*

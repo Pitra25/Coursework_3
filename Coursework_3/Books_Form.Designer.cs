@@ -73,7 +73,7 @@
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.24521F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.75479F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(806, 522);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(766, 522);
 			this.tableLayoutPanel2.TabIndex = 1;
 			// 
 			// Img_Book
@@ -81,7 +81,7 @@
 			this.Img_Book.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Img_Book.Location = new System.Drawing.Point(3, 3);
 			this.Img_Book.Name = "Img_Book";
-			this.Img_Book.Size = new System.Drawing.Size(294, 392);
+			this.Img_Book.Size = new System.Drawing.Size(256, 392);
 			this.Img_Book.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.Img_Book.TabIndex = 0;
 			this.Img_Book.TabStop = false;
@@ -98,7 +98,7 @@
 			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(294, 118);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(256, 118);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// Name_book_label
@@ -107,7 +107,7 @@
 			this.Name_book_label.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Name_book_label.Location = new System.Drawing.Point(3, 0);
 			this.Name_book_label.Name = "Name_book_label";
-			this.Name_book_label.Size = new System.Drawing.Size(288, 59);
+			this.Name_book_label.Size = new System.Drawing.Size(250, 59);
 			this.Name_book_label.TabIndex = 0;
 			this.Name_book_label.Text = "Название";
 			this.Name_book_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -118,7 +118,7 @@
 			this.Name_Avtor_label.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Name_Avtor_label.Location = new System.Drawing.Point(3, 59);
 			this.Name_Avtor_label.Name = "Name_Avtor_label";
-			this.Name_Avtor_label.Size = new System.Drawing.Size(288, 59);
+			this.Name_Avtor_label.Size = new System.Drawing.Size(250, 59);
 			this.Name_Avtor_label.TabIndex = 1;
 			this.Name_Avtor_label.Text = "Автор";
 			this.Name_Avtor_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,7 +131,7 @@
 			this.tableLayoutPanel3.Controls.Add(this.About_author, 0, 1);
 			this.tableLayoutPanel3.Controls.Add(this.About_book, 0, 0);
 			this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel3.Location = new System.Drawing.Point(311, 3);
+			this.tableLayoutPanel3.Location = new System.Drawing.Point(271, 3);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			this.tableLayoutPanel3.RowCount = 3;
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.13043F));
@@ -148,6 +148,7 @@
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(203, 18);
 			this.dataGridView1.TabIndex = 5;
+			this.dataGridView1.Visible = false;
 			// 
 			// About_author
 			// 
@@ -180,7 +181,7 @@
 			this.tableLayoutPanel4.Controls.Add(this.button1, 0, 1);
 			this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 0);
 			this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel4.Location = new System.Drawing.Point(311, 401);
+			this.tableLayoutPanel4.Location = new System.Drawing.Point(271, 401);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
 			this.tableLayoutPanel4.RowCount = 2;
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -263,7 +264,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(806, 522);
+			this.ClientSize = new System.Drawing.Size(766, 522);
 			this.Controls.Add(this.tableLayoutPanel2);
 			this.Name = "Books_Form";
 			this.Text = "Детали книги";

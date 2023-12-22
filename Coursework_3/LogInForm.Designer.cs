@@ -43,7 +43,8 @@
 			// label_Nameblock
 			// 
 			this.label_Nameblock.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label_Nameblock.Font = new System.Drawing.Font("Corbel Light", 35F);
+			this.label_Nameblock.Font = new System.Drawing.Font("Constantia", 35F, System.Drawing.FontStyle.Bold);
+			this.label_Nameblock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(173)))), ((int)(((byte)(79)))));
 			this.label_Nameblock.Location = new System.Drawing.Point(0, 0);
 			this.label_Nameblock.Name = "label_Nameblock";
 			this.label_Nameblock.Size = new System.Drawing.Size(492, 113);
@@ -75,8 +76,9 @@
 			// 
 			// LogIn_btn
 			// 
-			this.LogIn_btn.Font = new System.Drawing.Font("Corbel Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LogIn_btn.ForeColor = System.Drawing.Color.Black;
+			this.LogIn_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.LogIn_btn.Font = new System.Drawing.Font("Constantia", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LogIn_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(173)))), ((int)(((byte)(79)))));
 			this.LogIn_btn.Location = new System.Drawing.Point(149, 170);
 			this.LogIn_btn.Name = "LogIn_btn";
 			this.LogIn_btn.Size = new System.Drawing.Size(180, 48);
@@ -89,6 +91,7 @@
 			// 
 			this.label_Pass.AutoSize = true;
 			this.label_Pass.Font = new System.Drawing.Font("Corbel Light", 14F);
+			this.label_Pass.ForeColor = System.Drawing.Color.Silver;
 			this.label_Pass.Location = new System.Drawing.Point(117, 89);
 			this.label_Pass.Name = "label_Pass";
 			this.label_Pass.Size = new System.Drawing.Size(70, 23);
@@ -97,10 +100,12 @@
 			// 
 			// Pass_Field
 			// 
-			this.Pass_Field.Font = new System.Drawing.Font("Candara Light", 14.25F);
+			this.Pass_Field.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(52)))), ((int)(((byte)(124)))));
+			this.Pass_Field.Font = new System.Drawing.Font("Arial", 14.25F);
+			this.Pass_Field.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(173)))), ((int)(((byte)(79)))));
 			this.Pass_Field.Location = new System.Drawing.Point(119, 115);
 			this.Pass_Field.Name = "Pass_Field";
-			this.Pass_Field.Size = new System.Drawing.Size(254, 31);
+			this.Pass_Field.Size = new System.Drawing.Size(254, 29);
 			this.Pass_Field.TabIndex = 4;
 			this.Pass_Field.UseSystemPasswordChar = true;
 			// 
@@ -108,6 +113,7 @@
 			// 
 			this.label_Login.AutoSize = true;
 			this.label_Login.Font = new System.Drawing.Font("Corbel Light", 14F);
+			this.label_Login.ForeColor = System.Drawing.Color.Silver;
 			this.label_Login.Location = new System.Drawing.Point(117, 20);
 			this.label_Login.Name = "label_Login";
 			this.label_Login.Size = new System.Drawing.Size(60, 23);
@@ -116,21 +122,24 @@
 			// 
 			// Login_Field
 			// 
-			this.Login_Field.Font = new System.Drawing.Font("Candara Light", 14.25F);
+			this.Login_Field.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(52)))), ((int)(((byte)(124)))));
+			this.Login_Field.Font = new System.Drawing.Font("Arial", 14.25F);
+			this.Login_Field.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(173)))), ((int)(((byte)(79)))));
 			this.Login_Field.Location = new System.Drawing.Point(119, 46);
 			this.Login_Field.Name = "Login_Field";
-			this.Login_Field.Size = new System.Drawing.Size(254, 31);
+			this.Login_Field.Size = new System.Drawing.Size(254, 29);
 			this.Login_Field.TabIndex = 3;
 			// 
 			// LogIn_Form
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(52)))), ((int)(((byte)(124)))));
 			this.ClientSize = new System.Drawing.Size(492, 348);
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel1);
 			this.Name = "LogIn_Form";
-			this.Text = "LogInForm";
+			this.Text = "Вход";
 			this.panel1.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();

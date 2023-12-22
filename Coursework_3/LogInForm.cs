@@ -18,6 +18,7 @@ namespace Coursework_3
 		public LogIn_Form()
 		{
 			InitializeComponent();
+			this.StartPosition = FormStartPosition.CenterScreen;
 		}
 
 		static BD_Connection db = new BD_Connection();
@@ -25,7 +26,6 @@ namespace Coursework_3
 		MySqlDataAdapter adapter = new MySqlDataAdapter();
 		//MySqlCommand command = new MySqlCommand(command_per, db.getConnection());
 		MySqlCommand command;
-
 		/*
 		 * Функция проверки на наличие пользователя в БД. 
 		 */
@@ -43,7 +43,7 @@ namespace Coursework_3
 					/*
 					 * Запрос с проверкой данных из бд и из полей на форме.
 					 */
-					command = new MySqlCommand("SELECT * FROM `Users` WHERE `id_Login` = @uL AND `id_Password` = @uP", db.getConnection());
+					command = new MySqlCommand("SELECT * FROM `Users` WHERE `Login` = @uL AND `Password` = @uP", db.getConnection());
 					/* 
 					 * Присвоение значений из полей на форме и передача их в запрос к бд 
 					 */
@@ -62,23 +62,40 @@ namespace Coursework_3
 				if (dataTable.Rows.Count > 0)
 				{
 					HomForm hom = new HomForm();
-					if(login == "ADMIN")
+					if(IsUpper_string(login) == true)
 					{
-						MessageBox.Show($"С возвращение if {login}.", $"{login}", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-						hom.menuStrip_Hom.Items[3].Visible = true;
-						hom.menuStrip_Hom.Items[4].Visible = true;
+						MessageBox.Show($"С возвращение if {login}.", $"{login}", 
+							MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+						try{
+							hom.menuStrip_Hom.Items[3].Visible = true;
+							hom.menuStrip_Hom.Items[4].Visible = true;
+						}
+						catch{
+							return;
+						}
 					}
 					else
-						MessageBox.Show($"С возвращение Else {login}.", $"{login}", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+						MessageBox.Show($"С возвращение Else {login}.", $"{login}", 
+							MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-					hom.Show();
-					this.Hide();
+					this.Close();
 				}
 				else
-					MessageBox.Show("Неправильный логин или пароль.", "Error");
+					MessageBox.Show("Неправильный логин или пароль.", "Error", 
+						MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 			}
 			else
-				MessageBox.Show("Пароли не совпадает.", "Error");
+				MessageBox.Show("Пароли не совпадает.", "Error", 
+					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+		}
+
+		static bool IsUpper_string(string login_upper)
+		{
+			foreach (char bukva in login_upper.Where(char.IsUpper))
+				return true;
+
+			return false;
 		}
 
 		/*private Boolean IsUserExist()
