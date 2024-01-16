@@ -82,6 +82,9 @@ dotnet_naming_style.pascal_case.required_suffix =
 dotnet_naming_style.pascal_case.word_separator = 
 dotnet_naming_style.pascal_case.capitalization = pascal_case
 
+# IDE0160: Преобразовать в namespace с заданной областью видимости блока
+dotnet_diagnostic.IDE0160.severity = error
+
 [*.vb]
 #### Стили именования ####
 

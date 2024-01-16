@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace Coursework_3
 {
@@ -23,9 +23,9 @@ namespace Coursework_3
 
 		static BD_Connection db = new BD_Connection();
 		DataTable dataTable = new DataTable();
-		MySqlDataAdapter adapter = new MySqlDataAdapter();
+		SqlDataAdapter adapter = new SqlDataAdapter();
 		//MySqlCommand command = new MySqlCommand(command_per, db.getConnection());
-		MySqlCommand command;
+		SqlCommand command;
 		/*
 		 * Функция проверки на наличие пользователя в БД. 
 		 */
@@ -43,12 +43,12 @@ namespace Coursework_3
 					/*
 					 * Запрос с проверкой данных из бд и из полей на форме.
 					 */
-					command = new MySqlCommand("SELECT * FROM `Users` WHERE `Login` = @uL AND `Password` = @uP", db.getConnection());
+					command = new SqlCommand("SELECT * FROM `Users` WHERE `Login` = @uL AND `Password` = @uP", db.getConnection());
 					/* 
 					 * Присвоение значений из полей на форме и передача их в запрос к бд 
 					 */
-					command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
-					command.Parameters.Add("@up", MySqlDbType.VarChar).Value = pass1;
+					command.Parameters.Add("@uL", SqlDbType.VarChar).Value = login;
+					command.Parameters.Add("@up", SqlDbType.VarChar).Value = pass1;
 			
 					adapter.SelectCommand = command;
 					adapter.Fill(dataTable);

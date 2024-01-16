@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Coursework_3
 {
@@ -22,8 +22,8 @@ namespace Coursework_3
 
 		static BD_Connection db = new BD_Connection();
 		DataTable dataTable = new DataTable();
-		MySqlDataAdapter adapter;
-		MySqlCommand command;
+		SqlDataAdapter adapter;
+		SqlCommand command;
 		DataSet dataSet = new DataSet();
 
 		private void NewBooks_FormClosed(object sender, FormClosedEventArgs e)
@@ -53,14 +53,14 @@ namespace Coursework_3
 				return;
 			}
 
-			command = new MySqlCommand("INSERT INTO `Books` (`id`, `Name`, `Avtar`, `About_author`, `About_book`, `availability`, `imagepath`) " +
+			command = new SqlCommand("INSERT INTO `Books` (`id`, `Name`, `Avtar`, `About_author`, `About_book`, `availability`, `imagepath`) " +
 				"VALUES (NULL, @name, @avatar, @about_author, @about_book, @Location,  @BLOBData)", db.getConnection());
 
-			command.Parameters.Add("@name", MySqlDbType.VarChar).Value = NameTb.Text;
-			command.Parameters.Add("@avatar", MySqlDbType.VarChar).Value = AvtarTb.Text;
-			command.Parameters.Add("@about_author", MySqlDbType.VarChar).Value = AboutAuthorTb.Text;
-			command.Parameters.Add("@about_book", MySqlDbType.VarChar).Value = AboutBookTb.Text;
-			command.Parameters.Add("@Location", MySqlDbType.VarChar).Value = LocationTb.Text;
+			command.Parameters.Add("@name", SqlDbType.VarChar).Value = NameTb.Text;
+			command.Parameters.Add("@avatar", SqlDbType.VarChar).Value = AvtarTb.Text;
+			command.Parameters.Add("@about_author", SqlDbType.VarChar).Value = AboutAuthorTb.Text;
+			command.Parameters.Add("@about_book", SqlDbType.VarChar).Value = AboutBookTb.Text;
+			command.Parameters.Add("@Location", SqlDbType.VarChar).Value = LocationTb.Text;
 
 			MemoryStream memory = new MemoryStream();
 			pictureBox.Image.Save(memory, ImageFormat.Jpeg);
@@ -71,7 +71,7 @@ namespace Coursework_3
 			memory.Read(bytBLOBData, 0, Convert.ToInt32(memory.Length));
 
 			//Создайте параметр для оператора вставки, содержащий изображение.
-			MySqlParameter Parameter = new MySqlParameter("@BLOBData", MySqlDbType.LongBlob, bytBLOBData.Length, 
+			SqlParameter Parameter = new SqlParameter("@BLOBData", SqlDbType.VarBinary, bytBLOBData.Length, 
 				ParameterDirection.Input, false, 0, 0, null, DataRowVersion.Current, bytBLOBData);
 
 			command.Parameters.Add(Parameter);

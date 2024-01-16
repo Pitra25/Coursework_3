@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Coursework_3
 {
@@ -22,20 +22,20 @@ namespace Coursework_3
 
 		static BD_Connection db = new BD_Connection();
 		DataTable dataTable = new DataTable();
-		MySqlDataAdapter adapter;
-		MySqlCommand command;
+		SqlDataAdapter adapter;
+		SqlCommand command;
 		DataSet dataSet = new DataSet();
 
 		private void LoadTableBooks()
 		{
 			db.OpenConnection();
 
-			command = new MySqlCommand("SELECT `id`, `Name`, `Avtar`, `About_author`, `About_book`, `availability` " +
+			command = new SqlCommand("SELECT `id`, `Name`, `Avtar`, `About_author`, `About_book`, `availability` " +
 				"FROM `Books`", db.getConnection());
 			command.ExecuteNonQuery();
 			dataTable = new DataTable();
 
-			adapter = new MySqlDataAdapter(command);
+			adapter = new SqlDataAdapter(command);
 			adapter.Fill(dataTable);
 
 			db.CloseConnection();
@@ -57,11 +57,11 @@ namespace Coursework_3
 			}
 			db.OpenConnection();
 
-			command = new MySqlCommand("SELECT `id`, `imagepath` FROM `Books` WHERE `id` = @id", db.getConnection());
-			command.Parameters.Add("@id", MySqlDbType.Int32).Value = id_card;
+			command = new SqlCommand("SELECT `id`, `imagepath` FROM `Books` WHERE `id` = @id", db.getConnection());
+			command.Parameters.Add("@id", SqlDbType.Int).Value = id_card;
 			command.ExecuteNonQuery();
 
-			adapter = new MySqlDataAdapter(command);
+			adapter = new SqlDataAdapter(command);
 			adapter.Fill(dataSet, "imagepath");
 			int c = dataSet.Tables["imagepath"].Rows.Count;
 
@@ -105,28 +105,28 @@ namespace Coursework_3
 			{
 				db.OpenConnection();
 				//Console.WriteLine("TextBoxLogin NULL");
-				command = new MySqlCommand("SELECT * FROM `Books` " +
+				command = new SqlCommand("SELECT * FROM `Books` " +
 					"WHERE `Name` = @Name", db.getConnection());
-				command.Parameters.Add("@Name", MySqlDbType.VarChar).Value = TB_Name.Text;
+				command.Parameters.Add("@Name", SqlDbType.VarChar).Value = TB_Name.Text;
 				command.ExecuteNonQuery();
 				db.CloseConnection();
 
 				dataTable = new DataTable();
-				adapter = new MySqlDataAdapter(command);
+				adapter = new SqlDataAdapter(command);
 				adapter.Fill(dataTable);
 
 			}
 			else if (TB_Avtar.Text != "")
 			{
 				db.OpenConnection();
-				command = new MySqlCommand("SELECT * FROM `Books` " +
+				command = new SqlCommand("SELECT * FROM `Books` " +
 					"WHERE `Avtar` = @Avtar", db.getConnection());
-				command.Parameters.Add("@Avtar", MySqlDbType.VarChar).Value = TB_Avtar.Text;
+				command.Parameters.Add("@Avtar", SqlDbType.VarChar).Value = TB_Avtar.Text;
 				command.ExecuteNonQuery();
 				db.CloseConnection();
 
 				dataTable = new DataTable();
-				adapter = new MySqlDataAdapter(command);
+				adapter = new SqlDataAdapter(command);
 				adapter.Fill(dataTable);
 
 			}

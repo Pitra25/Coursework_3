@@ -50,6 +50,7 @@
 			this.User_ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.зарплатаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.должностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
@@ -89,7 +90,6 @@
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.timer = new System.Windows.Forms.Timer(this.components);
 			this.dataGridView2 = new System.Windows.Forms.DataGridView();
-			this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip_Hom.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -170,7 +170,7 @@
 			// 
 			this.History_ToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
 			this.History_ToolStripMenuItem.Name = "History_ToolStripMenuItem";
-			this.History_ToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
+			this.History_ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
 			this.History_ToolStripMenuItem.Text = "История";
 			this.History_ToolStripMenuItem.Click += new System.EventHandler(this.History_ToolStripMenuItem_Click);
 			// 
@@ -298,6 +298,13 @@
 			this.должностиToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
 			this.должностиToolStripMenuItem.Text = "Должности";
 			// 
+			// logToolStripMenuItem
+			// 
+			this.logToolStripMenuItem.Name = "logToolStripMenuItem";
+			this.logToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+			this.logToolStripMenuItem.Text = "log";
+			this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
+			// 
 			// panel1
 			// 
 			this.panel1.Controls.Add(this.label1);
@@ -322,22 +329,25 @@
 			// 
 			// panel2
 			// 
+			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.panel2.Controls.Add(this.MoreMtn1Cart);
 			this.panel2.Controls.Add(this.panel9);
 			this.panel2.Controls.Add(this.panel8);
 			this.panel2.Controls.Add(this.panel5);
-			this.panel2.Location = new System.Drawing.Point(17, 15);
+			this.panel2.Controls.Add(this.MoreMtn1Cart);
+			this.panel2.Location = new System.Drawing.Point(7, 14);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(294, 652);
+			this.panel2.Size = new System.Drawing.Size(300, 652);
 			this.panel2.TabIndex = 2;
 			// 
 			// MoreMtn1Cart
 			// 
 			this.MoreMtn1Cart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(52)))), ((int)(((byte)(124)))));
 			this.MoreMtn1Cart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.MoreMtn1Cart.Dock = System.Windows.Forms.DockStyle.Top;
+			this.MoreMtn1Cart.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.MoreMtn1Cart.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(52)))), ((int)(((byte)(124)))));
 			this.MoreMtn1Cart.FlatAppearance.BorderSize = 0;
 			this.MoreMtn1Cart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(52)))), ((int)(((byte)(124)))));
@@ -347,7 +357,7 @@
 			this.MoreMtn1Cart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(173)))), ((int)(((byte)(79)))));
 			this.MoreMtn1Cart.Location = new System.Drawing.Point(0, 598);
 			this.MoreMtn1Cart.Name = "MoreMtn1Cart";
-			this.MoreMtn1Cart.Size = new System.Drawing.Size(294, 54);
+			this.MoreMtn1Cart.Size = new System.Drawing.Size(300, 54);
 			this.MoreMtn1Cart.TabIndex = 8;
 			this.MoreMtn1Cart.Text = "Подробнее";
 			this.MoreMtn1Cart.UseVisualStyleBackColor = false;
@@ -356,21 +366,21 @@
 			// panel9
 			// 
 			this.panel9.Controls.Add(this.Label_name_book_1);
-			this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panel9.Location = new System.Drawing.Point(0, 524);
 			this.panel9.Name = "panel9";
-			this.panel9.Size = new System.Drawing.Size(294, 74);
+			this.panel9.Size = new System.Drawing.Size(300, 74);
 			this.panel9.TabIndex = 7;
 			// 
 			// Label_name_book_1
 			// 
 			this.Label_name_book_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(52)))), ((int)(((byte)(124)))));
-			this.Label_name_book_1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.Label_name_book_1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Label_name_book_1.Font = new System.Drawing.Font("Segoe Print", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.Label_name_book_1.ForeColor = System.Drawing.Color.Silver;
 			this.Label_name_book_1.Location = new System.Drawing.Point(0, 0);
 			this.Label_name_book_1.Name = "Label_name_book_1";
-			this.Label_name_book_1.Size = new System.Drawing.Size(294, 74);
+			this.Label_name_book_1.Size = new System.Drawing.Size(300, 74);
 			this.Label_name_book_1.TabIndex = 0;
 			this.Label_name_book_1.Text = "Имя Name";
 			this.Label_name_book_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -379,21 +389,19 @@
 			// 
 			this.panel8.Controls.Add(this.Label_Author_1);
 			this.panel8.Controls.Add(this.label3);
-			this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel8.Location = new System.Drawing.Point(0, 427);
 			this.panel8.Name = "panel8";
-			this.panel8.Size = new System.Drawing.Size(294, 97);
+			this.panel8.Size = new System.Drawing.Size(300, 97);
 			this.panel8.TabIndex = 6;
 			// 
 			// Label_Author_1
 			// 
 			this.Label_Author_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(52)))), ((int)(((byte)(124)))));
-			this.Label_Author_1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Label_Author_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.Label_Author_1.ForeColor = System.Drawing.Color.Silver;
 			this.Label_Author_1.Location = new System.Drawing.Point(0, 0);
 			this.Label_Author_1.Name = "Label_Author_1";
-			this.Label_Author_1.Size = new System.Drawing.Size(175, 97);
+			this.Label_Author_1.Size = new System.Drawing.Size(159, 97);
 			this.Label_Author_1.TabIndex = 0;
 			this.Label_Author_1.Text = "Author";
 			this.Label_Author_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -401,12 +409,11 @@
 			// label3
 			// 
 			this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(52)))), ((int)(((byte)(124)))));
-			this.label3.Dock = System.Windows.Forms.DockStyle.Right;
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label3.ForeColor = System.Drawing.Color.Silver;
-			this.label3.Location = new System.Drawing.Point(175, 0);
+			this.label3.Location = new System.Drawing.Point(159, 0);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(119, 97);
+			this.label3.Size = new System.Drawing.Size(141, 97);
 			this.label3.TabIndex = 1;
 			this.label3.Text = "label3";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -417,18 +424,18 @@
 			this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel5.Location = new System.Drawing.Point(0, 0);
 			this.panel5.Name = "panel5";
-			this.panel5.Size = new System.Drawing.Size(294, 427);
+			this.panel5.Size = new System.Drawing.Size(300, 427);
 			this.panel5.TabIndex = 5;
 			// 
 			// pictureBox1
 			// 
 			this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(52)))), ((int)(((byte)(124)))));
 			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pictureBox1.Image = global::Coursework_3.Properties.Resources.Image;
 			this.pictureBox1.Location = new System.Drawing.Point(0, 0);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(294, 427);
+			this.pictureBox1.Size = new System.Drawing.Size(300, 427);
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox1.TabIndex = 1;
 			this.pictureBox1.TabStop = false;
@@ -456,6 +463,7 @@
 			// 
 			// panel15
 			// 
+			this.panel15.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.panel15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.panel15.Controls.Add(this.button2);
@@ -464,9 +472,9 @@
 			this.panel15.Controls.Add(this.panel18);
 			this.panel15.Controls.Add(this.panel19);
 			this.panel15.Controls.Add(this.panel20);
-			this.panel15.Location = new System.Drawing.Point(17, 15);
+			this.panel15.Location = new System.Drawing.Point(7, 13);
 			this.panel15.Name = "panel15";
-			this.panel15.Size = new System.Drawing.Size(282, 651);
+			this.panel15.Size = new System.Drawing.Size(300, 651);
 			this.panel15.TabIndex = 3;
 			// 
 			// button2
@@ -479,7 +487,7 @@
 			this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(173)))), ((int)(((byte)(79)))));
 			this.button2.Location = new System.Drawing.Point(0, 597);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(282, 55);
+			this.button2.Size = new System.Drawing.Size(300, 54);
 			this.button2.TabIndex = 8;
 			this.button2.Text = "Подробнее";
 			this.button2.UseVisualStyleBackColor = false;
@@ -491,7 +499,7 @@
 			this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel16.Location = new System.Drawing.Point(0, 523);
 			this.panel16.Name = "panel16";
-			this.panel16.Size = new System.Drawing.Size(282, 74);
+			this.panel16.Size = new System.Drawing.Size(300, 74);
 			this.panel16.TabIndex = 7;
 			// 
 			// Label_name_book_3
@@ -502,7 +510,7 @@
 			this.Label_name_book_3.ForeColor = System.Drawing.Color.Silver;
 			this.Label_name_book_3.Location = new System.Drawing.Point(0, 0);
 			this.Label_name_book_3.Name = "Label_name_book_3";
-			this.Label_name_book_3.Size = new System.Drawing.Size(282, 74);
+			this.Label_name_book_3.Size = new System.Drawing.Size(300, 74);
 			this.Label_name_book_3.TabIndex = 0;
 			this.Label_name_book_3.Text = "Имя Name";
 			this.Label_name_book_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -514,7 +522,7 @@
 			this.panel17.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel17.Location = new System.Drawing.Point(0, 426);
 			this.panel17.Name = "panel17";
-			this.panel17.Size = new System.Drawing.Size(282, 97);
+			this.panel17.Size = new System.Drawing.Size(300, 97);
 			this.panel17.TabIndex = 6;
 			// 
 			// label7
@@ -525,7 +533,7 @@
 			this.label7.ForeColor = System.Drawing.Color.Silver;
 			this.label7.Location = new System.Drawing.Point(159, 0);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(123, 97);
+			this.label7.Size = new System.Drawing.Size(141, 97);
 			this.label7.TabIndex = 1;
 			this.label7.Text = "label7";
 			this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -549,7 +557,7 @@
 			this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel18.Location = new System.Drawing.Point(0, 0);
 			this.panel18.Name = "panel18";
-			this.panel18.Size = new System.Drawing.Size(282, 426);
+			this.panel18.Size = new System.Drawing.Size(300, 426);
 			this.panel18.TabIndex = 5;
 			// 
 			// pictureBox3
@@ -560,7 +568,7 @@
 			this.pictureBox3.Image = global::Coursework_3.Properties.Resources.Image;
 			this.pictureBox3.Location = new System.Drawing.Point(0, 0);
 			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(282, 426);
+			this.pictureBox3.Size = new System.Drawing.Size(300, 426);
 			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox3.TabIndex = 1;
 			this.pictureBox3.TabStop = false;
@@ -590,6 +598,7 @@
 			// 
 			// panel6
 			// 
+			this.panel6.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.panel6.Controls.Add(this.button1);
@@ -597,9 +606,9 @@
 			this.panel6.Controls.Add(this.panel11);
 			this.panel6.Controls.Add(this.panel12);
 			this.panel6.Controls.Add(this.panel14);
-			this.panel6.Location = new System.Drawing.Point(17, 16);
+			this.panel6.Location = new System.Drawing.Point(11, 15);
 			this.panel6.Name = "panel6";
-			this.panel6.Size = new System.Drawing.Size(282, 651);
+			this.panel6.Size = new System.Drawing.Size(300, 651);
 			this.panel6.TabIndex = 3;
 			// 
 			// button1
@@ -610,9 +619,9 @@
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button1.Font = new System.Drawing.Font("MS PGothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(173)))), ((int)(((byte)(79)))));
-			this.button1.Location = new System.Drawing.Point(0, 597);
+			this.button1.Location = new System.Drawing.Point(0, 578);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(282, 55);
+			this.button1.Size = new System.Drawing.Size(300, 73);
 			this.button1.TabIndex = 8;
 			this.button1.Text = "Подробнее";
 			this.button1.UseVisualStyleBackColor = false;
@@ -624,7 +633,7 @@
 			this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel7.Location = new System.Drawing.Point(0, 523);
 			this.panel7.Name = "panel7";
-			this.panel7.Size = new System.Drawing.Size(282, 74);
+			this.panel7.Size = new System.Drawing.Size(300, 55);
 			this.panel7.TabIndex = 7;
 			// 
 			// Label_name_book_2
@@ -635,7 +644,7 @@
 			this.Label_name_book_2.ForeColor = System.Drawing.Color.Silver;
 			this.Label_name_book_2.Location = new System.Drawing.Point(0, 0);
 			this.Label_name_book_2.Name = "Label_name_book_2";
-			this.Label_name_book_2.Size = new System.Drawing.Size(282, 74);
+			this.Label_name_book_2.Size = new System.Drawing.Size(300, 55);
 			this.Label_name_book_2.TabIndex = 0;
 			this.Label_name_book_2.Text = "Имя Name";
 			this.Label_name_book_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -647,7 +656,7 @@
 			this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel11.Location = new System.Drawing.Point(0, 426);
 			this.panel11.Name = "panel11";
-			this.panel11.Size = new System.Drawing.Size(282, 97);
+			this.panel11.Size = new System.Drawing.Size(300, 97);
 			this.panel11.TabIndex = 6;
 			// 
 			// label4
@@ -656,9 +665,9 @@
 			this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label4.ForeColor = System.Drawing.Color.Silver;
-			this.label4.Location = new System.Drawing.Point(175, 0);
+			this.label4.Location = new System.Drawing.Point(159, 0);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(107, 97);
+			this.label4.Size = new System.Drawing.Size(141, 97);
 			this.label4.TabIndex = 1;
 			this.label4.Text = "label4";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -671,7 +680,7 @@
 			this.Label_Author_2.ForeColor = System.Drawing.Color.Silver;
 			this.Label_Author_2.Location = new System.Drawing.Point(0, 0);
 			this.Label_Author_2.Name = "Label_Author_2";
-			this.Label_Author_2.Size = new System.Drawing.Size(175, 97);
+			this.Label_Author_2.Size = new System.Drawing.Size(159, 97);
 			this.Label_Author_2.TabIndex = 0;
 			this.Label_Author_2.Text = "Author";
 			this.Label_Author_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -682,7 +691,7 @@
 			this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel12.Location = new System.Drawing.Point(0, 0);
 			this.panel12.Name = "panel12";
-			this.panel12.Size = new System.Drawing.Size(282, 426);
+			this.panel12.Size = new System.Drawing.Size(300, 426);
 			this.panel12.TabIndex = 5;
 			// 
 			// pictureBox2
@@ -693,7 +702,7 @@
 			this.pictureBox2.Image = global::Coursework_3.Properties.Resources.Image;
 			this.pictureBox2.Location = new System.Drawing.Point(0, 0);
 			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(282, 426);
+			this.pictureBox2.Size = new System.Drawing.Size(300, 426);
 			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox2.TabIndex = 1;
 			this.pictureBox2.TabStop = false;
@@ -737,13 +746,6 @@
 			this.dataGridView2.Size = new System.Drawing.Size(462, 239);
 			this.dataGridView2.TabIndex = 6;
 			this.dataGridView2.Visible = false;
-			// 
-			// logToolStripMenuItem
-			// 
-			this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-			this.logToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
-			this.logToolStripMenuItem.Text = "log";
-			this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
 			// 
 			// HomForm
 			// 

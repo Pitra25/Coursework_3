@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +10,7 @@ using System.Windows.Forms;
 using System.Timers;
 using System.IO;
 using System.Threading;
+using System.Data.SqlClient;
 
 namespace Coursework_3
 {
@@ -25,8 +25,8 @@ namespace Coursework_3
 
 		static BD_Connection db = new BD_Connection();
 		DataTable dataTable;
-		MySqlDataAdapter adapter;
-		MySqlCommand command;
+		SqlDataAdapter adapter;
+		SqlCommand command;
 		DataSet dataSet = new DataSet();
 
 		public int id_cards;
@@ -61,12 +61,12 @@ namespace Coursework_3
 				}
 
 				db.OpenConnection();
-				command = new MySqlCommand("SELECT * FROM `Books` WHERE `id` =  @id", db.getConnection());
-				command.Parameters.Add("@id", MySqlDbType.Int32).Value = id_cards;
+				command = new SqlCommand("SELECT * FROM `Books` WHERE `id` =  @id", db.getConnection());
+				command.Parameters.Add("@id", SqlDbType.Int).Value = id_cards;
 				command.ExecuteNonQuery();
 				dataTable = new DataTable();
 
-				adapter = new MySqlDataAdapter(command);
+				adapter = new SqlDataAdapter(command);
 				adapter.Fill(dataTable);
 				db.CloseConnection();
 
@@ -84,11 +84,11 @@ namespace Coursework_3
 			try
 			{
 				db.OpenConnection();
-				command = new MySqlCommand("SELECT `imagepath` FROM `Books` WHERE `id` = @id_Img", db.getConnection());
-				command.Parameters.Add("@id_Img", MySqlDbType.VarChar).Value = id_cards;
+				command = new SqlCommand("SELECT `imagepath` FROM `Books` WHERE `id` = @id_Img", db.getConnection());
+				command.Parameters.Add("@id_Img", SqlDbType.VarChar).Value = id_cards;
 				db.CloseConnection();
 
-				adapter = new MySqlDataAdapter(command);
+				adapter = new SqlDataAdapter(command);
 				adapter.Fill(dataSet, "imagepath");
 				int c = dataSet.Tables["imagepath"].Rows.Count;
 
@@ -120,14 +120,14 @@ namespace Coursework_3
 			try
 			{
 				db.OpenConnection();
-				command = new MySqlCommand("SELECT `Name`,`Avtar`,`About_author`,`About_book`,`availability` " +
+				command = new SqlCommand("SELECT `Name`,`Avtar`,`About_author`,`About_book`,`availability` " +
 					"FROM `Books` WHERE `id` = @id_Img", db.getConnection());
-				command.Parameters.Add("@id_Img", MySqlDbType.VarChar).Value = id_cards;
+				command.Parameters.Add("@id_Img", SqlDbType.VarChar).Value = id_cards;
 
 				command.ExecuteNonQuery();
 				dataTable = new DataTable();
 
-				adapter = new MySqlDataAdapter(command);
+				adapter = new SqlDataAdapter(command);
 				adapter.Fill(dataTable);
 				db.CloseConnection();
 

@@ -1,39 +1,36 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+
 
 namespace Coursework_3
 {
 	internal class BD_Connection
 	{
 
-		/*static string datasource = "127.0.0.1";
-		static string database = "BDCoursework";
-		static string port = "3306";
+		private SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Patrick\\Documents\\BDCoursework.mdf;" +
+				"Integrated Security=True;Connect Timeout=30;Encrypt=False");
 
-		static string usernameU = "User";
-		static string passwordU = "User";
+		public void OpenConnection()
+		{
+			if (connection.State == System.Data.ConnectionState.Closed)
+				connection.Open();
+		}
+		public void CloseConnection()
+		{
+			if (connection.State == System.Data.ConnectionState.Open)
+				connection.Close();
+		}
+		public SqlConnection getConnection()
+		{
+			return connection;
+		}
 
-		static string usernameA = "ADMIN";
-		static string passwordA = "123";
 
-		static string ConnectionString = $"datasource={ datasource };port={ port };username={ usernameU };password={ passwordU };database={ database }";
-		static string query = "Select * From User";
+		/*
+		private SqlConnection Connection = new SqlConnection("server=localhost;port=3306;username=User;password=User;database=BDCoursework");
+		private SqlConnection Connection_adm = new SqlConnection("server=localhost;port=3306;username=ADMIN_BD;password=123;database=BDCoursework");
 
-		MySqlCommand commandDatabase = new MySqlCommand(query, ConnectionString);
-		commandDatabase.CommandTimeout = 60;
-		MySqlDataReader reader;*/
-
-
-
-
-		private MySqlConnection Connection = new MySqlConnection("server=localhost;port=3306;username=User;password=User;database=BDCoursework");
-		private MySqlConnection Connection_adm = new MySqlConnection("server=localhost;port=3306;username=ADMIN_BD;password=123;database=BDCoursework");
-		
 		public void OpenConnection()
 		{
 			if (Connection.State == System.Data.ConnectionState.Closed)
@@ -44,11 +41,11 @@ namespace Coursework_3
 			if (Connection.State == System.Data.ConnectionState.Open)
 				Connection.Close();
 		}
-		public MySqlConnection getConnection()
+		public SqlConnection getConnection()
 		{
 			return Connection;
 		}
-		
+
 
 		public void OpenConnectionAdm()
 		{
@@ -60,9 +57,9 @@ namespace Coursework_3
 			if (Connection_adm.State == System.Data.ConnectionState.Open)
 				Connection_adm.Close();
 		}
-		public MySqlConnection getConnectionAdm()
+		public SqlConnection getConnectionAdm()
 		{
 			return Connection_adm;
-		}
+		}*/
 	}
 }

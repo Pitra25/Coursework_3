@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Coursework_3
 {
@@ -20,9 +20,9 @@ namespace Coursework_3
 
 		readonly static BD_Connection db = new BD_Connection();
 		DataTable dataTable;
-		MySqlDataAdapter adapter;
+		SqlDataAdapter adapter;
 		//MySqlCommand command = new MySqlCommand(command_per, db.getConnection());
-		MySqlCommand command;
+		SqlCommand command;
 
 		private void Logs_Load(object sender, EventArgs e)
 		{
@@ -32,13 +32,13 @@ namespace Coursework_3
 
 		private void Load_User_DataGridView()
 		{
-			db.OpenConnectionAdm();
-			command = new MySqlCommand("SELECT * FROM `Logs_User`", db.getConnectionAdm());
+			db.OpenConnection();
+			command = new SqlCommand("SELECT * FROM `Logs_User`", db.getConnection());
 
 			command.ExecuteNonQuery();
 			dataTable = new DataTable();
 
-			adapter = new MySqlDataAdapter(command);
+			adapter = new SqlDataAdapter(command);
 			adapter.Fill(dataTable);
 
 			db.CloseConnection();
@@ -52,18 +52,18 @@ namespace Coursework_3
 			this.dataGridViewUser.Columns[0].Width = 25;
 			this.dataGridViewUser.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-			db.CloseConnectionAdm();
+			db.CloseConnection();
 		}
 
 		private void Load_Book_DataGridView()
 		{
-			db.OpenConnectionAdm();
-			command = new MySqlCommand("SELECT * FROM `Logs_Book`", db.getConnectionAdm());
+			db.OpenConnection();
+			command = new SqlCommand("SELECT * FROM `Logs_Book`", db.getConnection());
 
 			command.ExecuteNonQuery();
 			dataTable = new DataTable();
 
-			adapter = new MySqlDataAdapter(command);
+			adapter = new SqlDataAdapter(command);
 			adapter.Fill(dataTable);
 
 			db.CloseConnection();
@@ -77,7 +77,7 @@ namespace Coursework_3
 			this.dataGridViewBooks.Columns[0].Width = 25;
 			this.dataGridViewBooks.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-			db.CloseConnectionAdm();
+			db.CloseConnection();
 		}
 
 		private void timer_Tick(object sender, EventArgs e)

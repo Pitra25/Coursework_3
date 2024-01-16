@@ -9,8 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Graph;
-using Microsoft.Graph.Models;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace Coursework_3
 {
@@ -26,8 +25,8 @@ namespace Coursework_3
 
 		static BD_Connection db = new BD_Connection();
 		DataTable dataTable;
-		MySqlDataAdapter adapter;
-		MySqlCommand command;
+		SqlDataAdapter adapter;
+		SqlCommand command;
 
 		private void Function_Loading_Database_Employee()
 		{
@@ -35,11 +34,11 @@ namespace Coursework_3
 			{
 				//dataGridViewEmployee.Rows.Clear();
 				db.OpenConnection();
-					command = new MySqlCommand("Select * From `Employee`", db.getConnection());
+					command = new SqlCommand("Select * From `Employee`", db.getConnection());
 					command.ExecuteNonQuery();
 					dataTable = new DataTable();
 		
-					adapter = new MySqlDataAdapter(command);
+					adapter = new SqlDataAdapter(command);
 					adapter.Fill(dataTable);
 
 				db.CloseConnection();
@@ -65,11 +64,11 @@ namespace Coursework_3
 			{
 				//dataGridViewUsers.Rows.Clear();
 				db.OpenConnection();
-				command = new MySqlCommand("Select * From `User`", db.getConnection());
+				command = new SqlCommand("Select * From `User`", db.getConnection());
 				command.ExecuteNonQuery();
 				dataTable = new DataTable();
 
-				adapter = new MySqlDataAdapter(command);
+				adapter = new SqlDataAdapter(command);
 				adapter.Fill(dataTable);
 
 				db.CloseConnection();
@@ -98,8 +97,8 @@ namespace Coursework_3
 			Console.WriteLine("ClickHandler {1}", id);
 
 			db.OpenConnection();
-				command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
-				command = new MySqlCommand("DELETE FROM `Users` WHERE `id` = @id", db.getConnection());
+				command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+				command = new SqlCommand("DELETE FROM `Users` WHERE `id` = @id", db.getConnection());
 			db.CloseConnection();
 
 			Function_Loading_Database_Employee();
@@ -122,13 +121,13 @@ namespace Coursework_3
 			{
 				db.OpenConnection();
 				//Console.WriteLine("TextBoxLogin NULL");
-				command = new MySqlCommand("SELECT * FROM `Employee` WHERE `Login` = @LoginUser", db.getConnection());
-				command.Parameters.Add("@LoginUser", MySqlDbType.VarChar).Value = textBoxLoginEmployee.Text;
+				command = new SqlCommand("SELECT * FROM `Employee` WHERE `Login` = @LoginUser", db.getConnection());
+				command.Parameters.Add("@LoginUser", SqlDbType.VarChar).Value = textBoxLoginEmployee.Text;
 				command.ExecuteNonQuery();
 				db.CloseConnection();
 
 				dataTable = new DataTable();
-				adapter = new MySqlDataAdapter(command);
+				adapter = new SqlDataAdapter(command);
 				adapter.Fill(dataTable);
 
 				/*dataGridViewEmployee.DataSource = dataTable;
@@ -150,13 +149,13 @@ namespace Coursework_3
 			{
 
 				db.OpenConnection();
-				command = new MySqlCommand("SELECT * FROM `Employee` WHERE `Name` = @NameUser", db.getConnection());
-				command.Parameters.Add("@NameUser", MySqlDbType.VarChar).Value = textBoxLoginEmployee.Text;
+				command = new SqlCommand("SELECT * FROM `Employee` WHERE `Name` = @NameUser", db.getConnection());
+				command.Parameters.Add("@NameUser", SqlDbType.VarChar).Value = textBoxLoginEmployee.Text;
 				command.ExecuteNonQuery();
 				db.CloseConnection();
 
 				dataTable = new DataTable();
-				adapter = new MySqlDataAdapter(command);
+				adapter = new SqlDataAdapter(command);
 				adapter.Fill(dataTable);
 
 				/*dataGridViewEmployee.DataSource = dataTable;
@@ -190,13 +189,13 @@ namespace Coursework_3
 			{
 				//Console.WriteLine("TextBoxLogin NULL");
 				db.OpenConnection();
-				command = new MySqlCommand("SELECT * FROM `User` WHERE `Login` = @LoginUser", db.getConnection());
-				command.Parameters.Add("@LoginUser", MySqlDbType.VarChar).Value = textBoxLoginEmployee.Text;
+				command = new SqlCommand("SELECT * FROM `User` WHERE `Login` = @LoginUser", db.getConnection());
+				command.Parameters.Add("@LoginUser", SqlDbType.VarChar).Value = textBoxLoginEmployee.Text;
 				command.ExecuteNonQuery();
 				db.CloseConnection();
 
 				dataTable = new DataTable();
-				adapter = new MySqlDataAdapter(command);
+				adapter = new SqlDataAdapter(command);
 				adapter.Fill(dataTable);
 
 				/*dataGridViewEmployee.DataSource = dataTable;
@@ -219,13 +218,13 @@ namespace Coursework_3
 				//Console.WriteLine("TextBoxName NULL");
 
 				db.OpenConnection();
-				command = new MySqlCommand("SELECT * FROM `User` WHERE `Login` = @NameUser", db.getConnection());
-				command.Parameters.Add("@NameUser", MySqlDbType.VarChar).Value = textBoxLoginEmployee.Text;
+				command = new SqlCommand("SELECT * FROM `User` WHERE `Login` = @NameUser", db.getConnection());
+				command.Parameters.Add("@NameUser", SqlDbType.VarChar).Value = textBoxLoginEmployee.Text;
 				command.ExecuteNonQuery();
 				db.CloseConnection();
 
 				dataTable = new DataTable();
-				adapter = new MySqlDataAdapter(command);
+				adapter = new SqlDataAdapter(command);
 				adapter.Fill(dataTable);
 
 				/*dataGridViewEmployee.DataSource = dataTable;
@@ -271,16 +270,16 @@ namespace Coursework_3
 				return;
 			}
 
-			db.OpenConnectionAdm();
-			command = new MySqlCommand("DELETE FROM `Employee` WHERE `id` = @idDele", db.getConnectionAdm());
-			command.Parameters.Add("@idDele", MySqlDbType.VarChar).Value = textBoxID.Text;
+			db.OpenConnection();
+			command = new SqlCommand("DELETE FROM `Employee` WHERE `id` = @idDele", db.getConnection());
+			command.Parameters.Add("@idDele", SqlDbType.VarChar).Value = textBoxID.Text;
 			command.ExecuteNonQuery();
 			dataTable = new DataTable();
 
-			adapter = new MySqlDataAdapter(command);
+			adapter = new SqlDataAdapter(command);
 			adapter.Fill(dataTable);
 
-			db.CloseConnectionAdm();
+			db.CloseConnection();
 
 			Function_Loading_Database_Employee();
 		}
@@ -293,16 +292,16 @@ namespace Coursework_3
 				return;
 			}
 
-			db.OpenConnectionAdm();
-			command = new MySqlCommand("DELETE FROM `Users` WHERE `id` = @idDele", db.getConnectionAdm());
-			command.Parameters.Add("@idDele", MySqlDbType.VarChar).Value = UserIdTB.Text;
+			db.OpenConnection();
+			command = new SqlCommand("DELETE FROM `Users` WHERE `id` = @idDele", db.getConnection());
+			command.Parameters.Add("@idDele", SqlDbType.VarChar).Value = UserIdTB.Text;
 			command.ExecuteNonQuery();
 			dataTable = new DataTable();
 
-			adapter = new MySqlDataAdapter(command);
+			adapter = new SqlDataAdapter(command);
 			adapter.Fill(dataTable);
 
-			db.CloseConnectionAdm();
+			db.CloseConnection();
 
 			Function_Loading_Database_User();
 		}

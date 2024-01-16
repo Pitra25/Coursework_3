@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Collections;
-using System.Data.OleDb;
+using System.Data.SqlClient;
 
 namespace Coursework_3
 {
@@ -26,9 +25,9 @@ namespace Coursework_3
 
 		readonly static BD_Connection db = new BD_Connection();
 		DataTable dataTable;
-		MySqlDataAdapter adapter;
+		SqlDataAdapter adapter;
 		//MySqlCommand command = new MySqlCommand(command_per, db.getConnection());
-		MySqlCommand command;
+		SqlCommand command;
 		DataSet dataSet = new DataSet();
 
 		private void ImgLoader()
@@ -37,7 +36,7 @@ namespace Coursework_3
 			{
 				db.OpenConnection();
 
-				command = new MySqlCommand("SELECT `imgid`, `imagepath` FROM `SaveImg` ORDER BY `imgid`", db.getConnection());
+				command = new SqlCommand("SELECT `imgid`, `imagepath` FROM `SaveImg` ORDER BY `imgid`", db.getConnection());
 
 				command.ExecuteNonQuery();
 				dataTable = new DataTable();
@@ -154,7 +153,7 @@ namespace Coursework_3
 			
 			try
 			{
-				command = new MySqlCommand("" +
+				command = new SqlCommand("" +
 				"INSERT INTO `Employee` " +
 					"(`id`, `Name`, `Surname`, `Patronymic`, `Position`, `Nationality`, `Passport_number`, `Passport_series`, `Email`, `Login`, `Password`, `Employee`) " +
 					"VALUES (NULL, @name, @lastNamed, @productName, @position, @nat, @number, @Series, @email, @login, @pass, @employee);" +
@@ -162,20 +161,20 @@ namespace Coursework_3
 					"VALUES (NULL, @imgname, @imagetype, @BLOBData);",
 				db.getConnection());
 								
-				command.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
-				command.Parameters.Add("@lastNamed", MySqlDbType.VarChar).Value = lastNamed;
-				command.Parameters.Add("@productName", MySqlDbType.VarChar).Value = productName;
-				command.Parameters.Add("@position", MySqlDbType.VarChar).Value = position;
-				command.Parameters.Add("@nat", MySqlDbType.VarChar).Value = Nationality;
-				command.Parameters.Add("@number", MySqlDbType.VarChar).Value = Number;
-				command.Parameters.Add("@Series", MySqlDbType.VarChar).Value = Series;
-				command.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
-				command.Parameters.Add("@login", MySqlDbType.VarChar).Value = login;
-				command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = pass;
-				command.Parameters.Add("@employee", MySqlDbType.VarChar).Value = "Сотрудник";
+				command.Parameters.Add("@name", SqlDbType.VarChar).Value = name;
+				command.Parameters.Add("@lastNamed", SqlDbType.VarChar).Value = lastNamed;
+				command.Parameters.Add("@productName", SqlDbType.VarChar).Value = productName;
+				command.Parameters.Add("@position", SqlDbType.VarChar).Value = position;
+				command.Parameters.Add("@nat", SqlDbType.VarChar).Value = Nationality;
+				command.Parameters.Add("@number", SqlDbType.VarChar).Value = Number;
+				command.Parameters.Add("@Series", SqlDbType.VarChar).Value = Series;
+				command.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
+				command.Parameters.Add("@login", SqlDbType.VarChar).Value = login;
+				command.Parameters.Add("@pass", SqlDbType.VarChar).Value = pass;
+				command.Parameters.Add("@employee", SqlDbType.VarChar).Value = "Сотрудник";
 
-				command.Parameters.Add("@imgname", MySqlDbType.VarChar).Value = name + ". Сотрудник.";
-				command.Parameters.Add("@imagetype", MySqlDbType.VarChar).Value = "Jpeg";
+				command.Parameters.Add("@imgname", SqlDbType.VarChar).Value = name + ". Сотрудник.";
+				command.Parameters.Add("@imagetype", SqlDbType.VarChar).Value = "Jpeg";
 
 				MemoryStream memory = new MemoryStream();
 				pictureBox.Image.Save(memory, ImageFormat.Jpeg);
@@ -186,7 +185,7 @@ namespace Coursework_3
 				memory.Read(bytBLOBData, 0, Convert.ToInt32(memory.Length));
 
 				//Создайте параметр для оператора вставки, содержащий изображение.
-				MySqlParameter Parameter = new MySqlParameter("@BLOBData", MySqlDbType.LongBlob, bytBLOBData.Length, ParameterDirection.Input, false,
+				SqlParameter Parameter = new SqlParameter("@BLOBData", SqlDbType.VarBinary, bytBLOBData.Length, ParameterDirection.Input, false,
 					0, 0, null, DataRowVersion.Current, bytBLOBData);
 				
 				command.Parameters.Add(Parameter);
@@ -238,22 +237,22 @@ namespace Coursework_3
 				return;
 
 			db.OpenConnection();
-			command = new MySqlCommand("INSERT INTO `User` " +
+			command = new SqlCommand("INSERT INTO `User` " +
 				"(`id`, `Login`, `Password`, `License`, `Name`, `Last_name`, `Patronymic`) " +
 					"VALUES (NULL, @login, @pass,@user ,@name, @lastNamed, @Patronymic);" +
 				"INSERT INTO `SaveImg` (`id`, `imagename`, `iamgetype`, `imagepath`) " +
 					"VALUES (NULL, @imgname, @imagetype, @BLOBData);",
 				db.getConnection());
 
-			command.Parameters.Add("@login", MySqlDbType.VarChar).Value = Login;
-			command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = pass;
-			command.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
-			command.Parameters.Add("@lastNamed", MySqlDbType.VarChar).Value = lastNamed;
-			command.Parameters.Add("@Patronymic", MySqlDbType.VarChar).Value = Patronymic;
-			command.Parameters.Add("@user", MySqlDbType.VarChar).Value = "Клиент";
+			command.Parameters.Add("@login", SqlDbType.VarChar).Value = Login;
+			command.Parameters.Add("@pass", SqlDbType.VarChar).Value = pass;
+			command.Parameters.Add("@name", SqlDbType.VarChar).Value = name;
+			command.Parameters.Add("@lastNamed", SqlDbType.VarChar).Value = lastNamed;
+			command.Parameters.Add("@Patronymic", SqlDbType.VarChar).Value = Patronymic;
+			command.Parameters.Add("@user", SqlDbType.VarChar).Value = "Клиент";
 
-			command.Parameters.Add("@imgname", MySqlDbType.VarChar).Value = name + ". Клиент.";
-			command.Parameters.Add("@imagetype", MySqlDbType.VarChar).Value = "Jpeg";
+			command.Parameters.Add("@imgname", SqlDbType.VarChar).Value = name + ". Клиент.";
+			command.Parameters.Add("@imagetype", SqlDbType.VarChar).Value = "Jpeg";
 
 			MemoryStream memory = new MemoryStream();
 			pictureBox.Image.Save(memory, ImageFormat.Jpeg);
@@ -264,7 +263,7 @@ namespace Coursework_3
 			memory.Read(bytBLOBData, 0, Convert.ToInt32(memory.Length));
 
 			//Создайте параметр для оператора вставки, содержащий изображение.
-			MySqlParameter Parameter = new MySqlParameter("@BLOBData", MySqlDbType.LongBlob, bytBLOBData.Length, ParameterDirection.Input, false,
+			SqlParameter Parameter = new SqlParameter("@BLOBData", SqlDbType.VarBinary, bytBLOBData.Length, ParameterDirection.Input, false,
 				0, 0, null, DataRowVersion.Current, bytBLOBData);
 
 			command.Parameters.Add(Parameter);
@@ -282,26 +281,21 @@ namespace Coursework_3
 		 */
 		private Boolean IsUserExist(string user, string nameF)
 		{
-			/*BD_Connection db = new BD_Connection();
-			DataTable dataTable = new DataTable();
-			MySqlDataAdapter adapter_loc = new MySqlDataAdapter();
-			//MySqlCommand command = new MySqlCommand(command_per, db.getConnection());
-			MySqlCommand command_loc;*/
 			try
 			{
 				db.OpenConnection();
 				if (user == "User")
 				{
-					command = new MySqlCommand("SELECT * FROM `User` WHERE `Login` = @log",
+					command = new SqlCommand("SELECT * FROM `User` WHERE `Login` = @log",
 						db.getConnection());
-					command.Parameters.Add("@log", MySqlDbType.VarChar).Value = nameF;
+					command.Parameters.Add("@log", SqlDbType.VarChar).Value = nameF;
 				}
 				else if (user == "Employee")
 				{
 					
-					command = new MySqlCommand("SELECT * FROM `Employee` WHERE `Name` = @name",
+					command = new SqlCommand("SELECT * FROM `Employee` WHERE `Name` = @name",
 							db.getConnection());
-					command.Parameters.Add("@name", MySqlDbType.VarChar).Value = nameF;
+					command.Parameters.Add("@name", SqlDbType.VarChar).Value = nameF;
 				}
 
 				adapter.SelectCommand = command;

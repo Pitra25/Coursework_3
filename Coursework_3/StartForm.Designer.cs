@@ -1,4 +1,6 @@
-﻿namespace Coursework_3
+﻿using System.Windows.Forms;
+
+namespace Coursework_3
 {
 	partial class StartForm
 	{
@@ -29,18 +31,18 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.timer = new System.Windows.Forms.Timer(this.components);
+			this.Timer = new System.Windows.Forms.Timer(this.components);
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// timer
+			// Timer
 			// 
-			this.timer.Enabled = true;
-			this.timer.Interval = 1000;
-			this.timer.Tick += new System.EventHandler(this.timer_Tick);
+			this.Timer.Enabled = true;
+			this.Timer.Interval = 1000;
+			this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
 			// 
 			// pictureBox1
 			// 
@@ -86,6 +88,7 @@
 			this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "StartForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "StartForm";
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
@@ -95,7 +98,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.Timer timer;
+		private System.Windows.Forms.Timer Timer;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;

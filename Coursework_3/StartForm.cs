@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,9 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Coursework_3
 {
@@ -17,50 +15,99 @@ namespace Coursework_3
 		public StartForm()
 		{
 			InitializeComponent();
-			this.StartPosition = FormStartPosition.CenterScreen;
 		}
 
-			/*
-			 *	Переписать !!!!
-			 */
+		/*
+		 *	Переписать !!!!
+		 */
+		private string GetConnectionString()
+		{
+			return "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Patrick\\Documents\\BDCoursework.mdf;" +
+				"Integrated Security=True;Connect Timeout=30;Encrypt=False";
 
-		private bool ConnectionTest()
+			/*return "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Patrick\\Documents\\Test.mdf;" +
+				"Integrated Security=True;Connect Timeout=30;Encrypt=True";*/
+		}
+
+		private void OpenSqlConnection()
 		{
 			try{
-				MySqlConnection Connection = new MySqlConnection("server=localhost;port=3306;username=User;password=User;database=BDCoursework");
+				string connectionString = GetConnectionString();
+
+				using (SqlConnection connection = new SqlConnection())
+				{
+					connection.ConnectionString = connectionString;
+
+					if (connection.State == ConnectionState.Closed)
+						connection.Open();
+
+					Console.WriteLine("State: {0}", connection.State);
+					Console.WriteLine("ConnectionString: {0}",
+						connection.ConnectionString);
+
+					connection.Close();
+
+					HomForm hom = new HomForm();
+					hom.Show();
+					this.Hide();		
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Отсутствует подключение к БД." + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Environment.Exit(0);
+			}
+		}
+		private void Timer_Tick(object sender, EventArgs e)
+		{
+			Console.WriteLine("Stop timer");
+			Timer.Stop();
+			OpenSqlConnection();
+		}
+
+
+		//void StartForm_FormClosing(object sender, FormClosingEventArgs e)
+		//{
+		//	e.Cancel = Class1.fclose();
+		//}
+		//void StartForm_FormClosed(object sender, FormClosedEventArgs e)
+		//{
+		//	Application.Exit();
+		//}
+		//public static bool fclose()
+		//{
+		//	var result = MessageBox.Show("Вы действительно хотите закрыть программу?", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+		//	if (result == DialogResult.OK) return false;
+		//	else return true;
+		//}
+
+		/*private bool ConnectionTest()
+		{
+			try{
+				//MySqlConnection Connection = new MySqlConnection("server=localhost;port=3306;username=User;password=User;database=BDCoursework");
+				MySqlConnection Connection = new MySqlConnection("server=localhost;port=3306;username=ADMIN_BD;password=123;database=BDCoursework");
+
+				Console.WriteLine("Connection DB :{1}", Connection);
 
 				if (Connection.State == ConnectionState.Closed)
 					Connection.Open();
 				Connection.Close();
-				return StartProtect(true);
-			}
-			catch{
-				return StartProtect(false);
-			}
-		}
+				Connection.Open();
+				Connection.Close();
 
-		private bool StartProtect(bool text)
-		{
-			if (text == true)
-			{
+
 				HomForm homForm = new HomForm();
 				homForm.Show();
 				this.Hide();
-				timer.Stop();
+				return true;
 			}
-			else if (text == false)
-			{
-				timer.Stop();
+			catch{
 				MessageBox.Show("Отсутствует подключение к БД.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				System.Environment.Exit(0);
-			} 
-			return false;
-		}
+				return false; 
+			}
+		}*/
 
-		private void timer_Tick(object sender, EventArgs e)
-		{
-			Console.WriteLine("Stop timer");
-			ConnectionTest();
-		}
+
 	}
 }
