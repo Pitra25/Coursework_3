@@ -201,6 +201,12 @@
     <Compile Include="LogIn_People.Designer.cs">
       <DependentUpon>LogIn_People.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logs.Designer.cs">
+      <DependentUpon>Logs.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewBooks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +251,9 @@
     <EmbeddedResource Include="LogIn_People.resx">
       <DependentUpon>LogIn_People.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Logs.resx">
+      <DependentUpon>Logs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewBooks.resx">
       <DependentUpon>NewBooks.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,6 +271,9 @@
     <EmbeddedResource Include="Users_Form.resx">
       <DependentUpon>Users_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -292,6 +304,7 @@
     <Content Include="images\interface\Close-darck.png" />
     <Content Include="images\interface\expand-window.png" />
     <Content Include="images\interface\collapse.png" />
+    <Content Include="images\interface\Image.png" />
     <Content Include="images\interface\stop-btn.png" />
     <Content Include="images\no\Unfold-darck.png" />
     <Content Include="images\no\RoleUp-darck.png" />
@@ -306,6 +319,7 @@
     <Content Include="images\logo\favicon-16x16.png" />
     <Content Include="images\logo\favicon-32x32.png" />
     <Content Include="images\logo\favicon.ico" />
+    <None Include="Resources\Image.png" />
     <None Include="Resources\Library_circular_creative_icon.jpeg" />
     <None Include="Resources\Library_circular_creative_icon %281%29.jpeg" />
     <None Include="Resources\Library_circular_creative_icon %282%29.jpeg" />

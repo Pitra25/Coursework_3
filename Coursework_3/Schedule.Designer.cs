@@ -37,6 +37,7 @@
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Name = "Schedule";
 			this.Text = "Расписание";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Schedule_FormClosed);
 			this.ResumeLayout(false);
 
 		}

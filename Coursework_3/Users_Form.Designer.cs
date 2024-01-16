@@ -38,11 +38,9 @@ namespace Coursework_3
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.Relout_btn = new System.Windows.Forms.Button();
 			this.textBoxLoginEmployee = new System.Windows.Forms.TextBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.textBoxNameEmployee = new System.Windows.Forms.TextBox();
 			this.Locate_btnEmployee = new System.Windows.Forms.Button();
-			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -50,12 +48,16 @@ namespace Coursework_3
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.button1 = new System.Windows.Forms.Button();
 			this.textBoxLoginUser = new System.Windows.Forms.TextBox();
-			this.textBox5 = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.textBoxNameUser = new System.Windows.Forms.TextBox();
 			this.Locate_brn_User = new System.Windows.Forms.Button();
-			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
+			this.textBoxID = new System.Windows.Forms.TextBox();
+			this.DeleteEmployeeBtn = new System.Windows.Forms.Button();
+			this.label3 = new System.Windows.Forms.Label();
+			this.UserIdTB = new System.Windows.Forms.TextBox();
+			this.DeleteUsersBtn = new System.Windows.Forms.Button();
+			this.label7 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -131,13 +133,14 @@ namespace Coursework_3
 			// 
 			// panel2
 			// 
+			this.panel2.Controls.Add(this.textBoxID);
+			this.panel2.Controls.Add(this.DeleteEmployeeBtn);
+			this.panel2.Controls.Add(this.label3);
 			this.panel2.Controls.Add(this.Relout_btn);
 			this.panel2.Controls.Add(this.textBoxLoginEmployee);
-			this.panel2.Controls.Add(this.textBox3);
 			this.panel2.Controls.Add(this.label1);
 			this.panel2.Controls.Add(this.textBoxNameEmployee);
 			this.panel2.Controls.Add(this.Locate_btnEmployee);
-			this.panel2.Controls.Add(this.label3);
 			this.panel2.Controls.Add(this.label2);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel2.Location = new System.Drawing.Point(583, 3);
@@ -147,8 +150,8 @@ namespace Coursework_3
 			// 
 			// Relout_btn
 			// 
-			this.Relout_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-			this.Relout_btn.Location = new System.Drawing.Point(129, 194);
+			this.Relout_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+			this.Relout_btn.Location = new System.Drawing.Point(129, 176);
 			this.Relout_btn.Name = "Relout_btn";
 			this.Relout_btn.Size = new System.Drawing.Size(95, 37);
 			this.Relout_btn.TabIndex = 8;
@@ -159,33 +162,26 @@ namespace Coursework_3
 			// textBoxLoginEmployee
 			// 
 			this.textBoxLoginEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBoxLoginEmployee.Location = new System.Drawing.Point(16, 59);
+			this.textBoxLoginEmployee.Location = new System.Drawing.Point(16, 67);
 			this.textBoxLoginEmployee.Name = "textBoxLoginEmployee";
 			this.textBoxLoginEmployee.Size = new System.Drawing.Size(207, 26);
 			this.textBoxLoginEmployee.TabIndex = 2;
 			this.textBoxLoginEmployee.TextChanged += new System.EventHandler(this.textBox_TextChanged);
 			// 
-			// textBox3
-			// 
-			this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBox3.Location = new System.Drawing.Point(16, 149);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(207, 26);
-			this.textBox3.TabIndex = 6;
-			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label1.Location = new System.Drawing.Point(15, 44);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(38, 13);
+			this.label1.Size = new System.Drawing.Size(55, 20);
 			this.label1.TabIndex = 3;
 			this.label1.Text = "Логин";
 			// 
 			// textBoxNameEmployee
 			// 
 			this.textBoxNameEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBoxNameEmployee.Location = new System.Drawing.Point(16, 105);
+			this.textBoxNameEmployee.Location = new System.Drawing.Point(17, 127);
 			this.textBoxNameEmployee.Name = "textBoxNameEmployee";
 			this.textBoxNameEmployee.Size = new System.Drawing.Size(207, 26);
 			this.textBoxNameEmployee.TabIndex = 4;
@@ -193,8 +189,8 @@ namespace Coursework_3
 			// 
 			// Locate_btnEmployee
 			// 
-			this.Locate_btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.Locate_btnEmployee.Location = new System.Drawing.Point(17, 194);
+			this.Locate_btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.Locate_btnEmployee.Location = new System.Drawing.Point(17, 176);
 			this.Locate_btnEmployee.Name = "Locate_btnEmployee";
 			this.Locate_btnEmployee.Size = new System.Drawing.Size(95, 37);
 			this.Locate_btnEmployee.TabIndex = 1;
@@ -202,21 +198,13 @@ namespace Coursework_3
 			this.Locate_btnEmployee.UseVisualStyleBackColor = true;
 			this.Locate_btnEmployee.Click += new System.EventHandler(this.Locate_btnEmployee_Click);
 			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(15, 133);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(42, 13);
-			this.label3.TabIndex = 7;
-			this.label3.Text = "Группа";
-			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(13, 89);
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label2.Location = new System.Drawing.Point(15, 104);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(29, 13);
+			this.label2.Size = new System.Drawing.Size(40, 20);
 			this.label2.TabIndex = 5;
 			this.label2.Text = "Имя";
 			// 
@@ -262,13 +250,14 @@ namespace Coursework_3
 			// 
 			// panel3
 			// 
+			this.panel3.Controls.Add(this.UserIdTB);
+			this.panel3.Controls.Add(this.DeleteUsersBtn);
+			this.panel3.Controls.Add(this.label7);
 			this.panel3.Controls.Add(this.button1);
 			this.panel3.Controls.Add(this.textBoxLoginUser);
-			this.panel3.Controls.Add(this.textBox5);
 			this.panel3.Controls.Add(this.label4);
 			this.panel3.Controls.Add(this.textBoxNameUser);
 			this.panel3.Controls.Add(this.Locate_brn_User);
-			this.panel3.Controls.Add(this.label5);
 			this.panel3.Controls.Add(this.label6);
 			this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel3.Location = new System.Drawing.Point(583, 3);
@@ -278,8 +267,8 @@ namespace Coursework_3
 			// 
 			// button1
 			// 
-			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-			this.button1.Location = new System.Drawing.Point(129, 194);
+			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+			this.button1.Location = new System.Drawing.Point(129, 176);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(95, 37);
 			this.button1.TabIndex = 8;
@@ -290,33 +279,26 @@ namespace Coursework_3
 			// textBoxLoginUser
 			// 
 			this.textBoxLoginUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBoxLoginUser.Location = new System.Drawing.Point(16, 59);
+			this.textBoxLoginUser.Location = new System.Drawing.Point(17, 67);
 			this.textBoxLoginUser.Name = "textBoxLoginUser";
 			this.textBoxLoginUser.Size = new System.Drawing.Size(207, 26);
 			this.textBoxLoginUser.TabIndex = 2;
 			this.textBoxLoginUser.TextChanged += new System.EventHandler(this.textBox_TextChanged);
 			// 
-			// textBox5
-			// 
-			this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBox5.Location = new System.Drawing.Point(16, 149);
-			this.textBox5.Name = "textBox5";
-			this.textBox5.Size = new System.Drawing.Size(207, 26);
-			this.textBox5.TabIndex = 6;
-			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label4.Location = new System.Drawing.Point(15, 44);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(38, 13);
+			this.label4.Size = new System.Drawing.Size(55, 20);
 			this.label4.TabIndex = 3;
 			this.label4.Text = "Логин";
 			// 
 			// textBoxNameUser
 			// 
 			this.textBoxNameUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBoxNameUser.Location = new System.Drawing.Point(16, 105);
+			this.textBoxNameUser.Location = new System.Drawing.Point(17, 127);
 			this.textBoxNameUser.Name = "textBoxNameUser";
 			this.textBoxNameUser.Size = new System.Drawing.Size(207, 26);
 			this.textBoxNameUser.TabIndex = 4;
@@ -324,8 +306,8 @@ namespace Coursework_3
 			// 
 			// Locate_brn_User
 			// 
-			this.Locate_brn_User.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.Locate_brn_User.Location = new System.Drawing.Point(17, 194);
+			this.Locate_brn_User.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.Locate_brn_User.Location = new System.Drawing.Point(17, 176);
 			this.Locate_brn_User.Name = "Locate_brn_User";
 			this.Locate_brn_User.Size = new System.Drawing.Size(95, 37);
 			this.Locate_brn_User.TabIndex = 1;
@@ -333,23 +315,73 @@ namespace Coursework_3
 			this.Locate_brn_User.UseVisualStyleBackColor = true;
 			this.Locate_brn_User.Click += new System.EventHandler(this.Locate_brn_User_Click);
 			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(15, 133);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(42, 13);
-			this.label5.TabIndex = 7;
-			this.label5.Text = "Группа";
-			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(13, 89);
+			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label6.Location = new System.Drawing.Point(15, 104);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(29, 13);
+			this.label6.Size = new System.Drawing.Size(40, 20);
 			this.label6.TabIndex = 5;
 			this.label6.Text = "Имя";
+			// 
+			// textBoxID
+			// 
+			this.textBoxID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.textBoxID.Location = new System.Drawing.Point(47, 253);
+			this.textBoxID.Name = "textBoxID";
+			this.textBoxID.Size = new System.Drawing.Size(65, 26);
+			this.textBoxID.TabIndex = 10;
+			// 
+			// DeleteEmployeeBtn
+			// 
+			this.DeleteEmployeeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.DeleteEmployeeBtn.Location = new System.Drawing.Point(129, 248);
+			this.DeleteEmployeeBtn.Name = "DeleteEmployeeBtn";
+			this.DeleteEmployeeBtn.Size = new System.Drawing.Size(95, 37);
+			this.DeleteEmployeeBtn.TabIndex = 9;
+			this.DeleteEmployeeBtn.Text = "Удалить";
+			this.DeleteEmployeeBtn.UseVisualStyleBackColor = true;
+			this.DeleteEmployeeBtn.Click += new System.EventHandler(this.DeleteEmployeeBtn_Click);
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label3.Location = new System.Drawing.Point(13, 256);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(26, 20);
+			this.label3.TabIndex = 11;
+			this.label3.Text = "ID";
+			// 
+			// UserIdTB
+			// 
+			this.UserIdTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.UserIdTB.Location = new System.Drawing.Point(47, 253);
+			this.UserIdTB.Name = "UserIdTB";
+			this.UserIdTB.Size = new System.Drawing.Size(65, 26);
+			this.UserIdTB.TabIndex = 13;
+			// 
+			// DeleteUsersBtn
+			// 
+			this.DeleteUsersBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.DeleteUsersBtn.Location = new System.Drawing.Point(129, 248);
+			this.DeleteUsersBtn.Name = "DeleteUsersBtn";
+			this.DeleteUsersBtn.Size = new System.Drawing.Size(95, 37);
+			this.DeleteUsersBtn.TabIndex = 12;
+			this.DeleteUsersBtn.Text = "Удалить";
+			this.DeleteUsersBtn.UseVisualStyleBackColor = true;
+			this.DeleteUsersBtn.Click += new System.EventHandler(this.DeleteUsersBtn_Click);
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label7.Location = new System.Drawing.Point(13, 256);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(26, 20);
+			this.label7.TabIndex = 14;
+			this.label7.Text = "ID";
 			// 
 			// Users_Form
 			// 
@@ -379,8 +411,6 @@ namespace Coursework_3
 
 		private System.Windows.Forms.DataGridView dataGridViewEmployee;
 		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox textBox3;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TextBox textBoxNameEmployee;
 		private System.Windows.Forms.Label label1;
@@ -397,11 +427,15 @@ namespace Coursework_3
 		private Panel panel3;
 		private Button button1;
 		private TextBox textBoxLoginUser;
-		private TextBox textBox5;
 		private Label label4;
 		private TextBox textBoxNameUser;
 		private Button Locate_brn_User;
-		private Label label5;
 		private Label label6;
+		private TextBox textBoxID;
+		private Button DeleteEmployeeBtn;
+		private Label label3;
+		private TextBox UserIdTB;
+		private Button DeleteUsersBtn;
+		private Label label7;
 	}
 }

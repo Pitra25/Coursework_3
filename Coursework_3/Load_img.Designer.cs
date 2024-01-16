@@ -56,6 +56,7 @@
 			this.tableLayoutPanel1.SetColumnSpan(this.pictureBox, 2);
 			this.pictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pictureBox.Image = global::Coursework_3.Properties.Resources.Image;
 			this.pictureBox.Location = new System.Drawing.Point(3, 3);
 			this.pictureBox.Name = "pictureBox";
 			this.pictureBox.Size = new System.Drawing.Size(794, 461);

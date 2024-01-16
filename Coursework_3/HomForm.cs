@@ -1,6 +1,4 @@
-﻿using Microsoft.Kiota.Abstractions;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +10,7 @@ using System.Windows.Forms;
 using System.Timers;
 using System.IO;
 using System.Collections;
+using System.Data.SqlClient;
 
 
 namespace Coursework_3
@@ -21,15 +20,15 @@ namespace Coursework_3
 		public HomForm()
 		{
 			InitializeComponent();
-			this.Size = new Size(969, 589);
+			this.Size = new Size(969, 825);
 			Function_Loading_Cart();
 		}
 
 		static BD_Connection db = new BD_Connection();
 		DataTable dataTable = new DataTable();
-		MySqlDataAdapter adapter;
+		SqlDataAdapter adapter;
 		//MySqlCommand command = new MySqlCommand(command_per, db.getConnection());
-		MySqlCommand command;
+		SqlCommand command;
         DataSet dataSet = new DataSet();
 
 		public static string id_card1;
@@ -41,10 +40,10 @@ namespace Coursework_3
 			try
 			{
 				db.OpenConnection();
+				command = new SqlCommand("SELECT `imagename`,`iamgetype`,`imagepath` FROM `Books` ORDER BY id DESC LIMIT 3", db.getConnection());
+				adapter = new SqlDataAdapter(command);
+				db.CloseConnection();
 
-				command = new MySqlCommand("SELECT `imagename`,`iamgetype`,`imagepath` FROM `Books` ORDER BY id DESC LIMIT 3", db.getConnection());
-				
-				adapter = new MySqlDataAdapter(command);
 				adapter.Fill(dataSet, "imagepath");
 				int c = dataSet.Tables["imagepath"].Rows.Count;
 
@@ -57,7 +56,7 @@ namespace Coursework_3
 					var byteBLOBData1 = byteBLOBData = (Byte[])(dataSet.Tables["imagepath"].Rows[c - 1]["imagepath"]);
 					var byteBLOBData2 = byteBLOBData = (Byte[])(dataSet.Tables["imagepath"].Rows[c - 2]["imagepath"]);
 					var byteBLOBData3 = byteBLOBData = (Byte[])(dataSet.Tables["imagepath"].Rows[c - 3]["imagepath"]);
-					
+
 					MemoryStream stmBLOBData1 = new MemoryStream(byteBLOBData1);
 					MemoryStream stmBLOBData2 = new MemoryStream(byteBLOBData2);
 					MemoryStream stmBLOBData3 = new MemoryStream(byteBLOBData3);
@@ -67,17 +66,16 @@ namespace Coursework_3
 					pictureBox2.Image = Image.FromStream(stmBLOBData2);
 					pictureBox3.Image = Image.FromStream(stmBLOBData3);
 					/*
-					//Отладка загрузки отображения картинок
+					Отладка загрузки отображения картинок
 					adapter.Fill(dataTable);
 					dataGridView2.DataSource = dataTable;*/
 				}
 
-				db.CloseConnection();
-
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(ex.Message);
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Environment.Exit(0);
 			}
 		}
 
@@ -92,12 +90,12 @@ namespace Coursework_3
 				ImgLoader();
 
 				db.OpenConnection();
-				command = new MySqlCommand("SELECT `id`, `Name`,`Avtor` FROM `Books` ORDER BY id DESC LIMIT 3", db.getConnection());
+				command = new SqlCommand("SELECT `id`, `Name`,`Avtar` FROM `Books` ORDER BY id DESC LIMIT 3", db.getConnection());
 		
 				command.ExecuteNonQuery();
 				dataTable = new DataTable();
 
-				adapter = new MySqlDataAdapter(command);
+				adapter = new SqlDataAdapter(command);
 				adapter.Fill(dataTable);
 				db.CloseConnection();
 
@@ -112,7 +110,7 @@ namespace Coursework_3
 				Label_name_book_2.Text = dataGridView1[1, 1].Value.ToString();
 				Label_Author_2.Text = dataGridView1[2, 1].Value.ToString();
 				label4.Text = dataGridView1[0, 1].Value.ToString();
-				
+
 				id_card3 = dataGridView1[0, 0].Value.ToString();
 				Label_name_book_3.Text = dataGridView1[1, 0].Value.ToString();
 				Label_Author_3.Text = dataGridView1[2, 0].Value.ToString();
@@ -154,10 +152,16 @@ namespace Coursework_3
 				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		private void TFunction_Loading_Cart(object sender, EventArgs e)
+		{
+			Function_Loading_Cart();
+		}
 
-		//int id_card = Convert.ToInt32(id_card1);
+		private void HomForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			System.Environment.Exit(0);
+		}
 
-		//Books_Form books_Form_cart = new Books_Form();
 		private void MoreBtn1Cart_Click(object sender, EventArgs e)
 		{
 			Books_Form books_Form = new Books_Form();
@@ -179,26 +183,53 @@ namespace Coursework_3
 			Console.WriteLine(id_card3);
 			books_Form.Show();
 		}
-	
+
+		private void ScheduleToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Schedule schedule = new Schedule();
+			schedule.Show();
+			this.Hide();
+		}
+		private void CatalogToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Catalog catalog = new Catalog();
+			catalog.Show();
+			this.Hide();
+		}
+		private void NewBooksToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			NewBooks newBooks = new NewBooks();
+			newBooks.Show();
+			this.Hide();
+		}
+		private void User_ToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			Users_Form users_Form = new Users_Form();
+			users_Form.Show();
+		}
 		private void Login_ToolStrip_MenuItem_Click(object sender, EventArgs e)
 		{
 			LogIn_Form logInForm = new LogIn_Form();
 			logInForm.ShowDialog();
 		}
-		private void User_ToolStripMenuItem1_Click(object sender, EventArgs e)
+		private void NewUser_ToolStripMenuItem1_Click(object sender, EventArgs e)
 		{
 			LogIn_People logIn_People = new LogIn_People();
 			logIn_People.ShowDialog();
 		}
-		private void TFunction_Loading_Cart(object sender, EventArgs e)
+
+		private void History_ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Function_Loading_Cart();
+
 		}
 
-		private void HomForm_FormClosed(object sender, FormClosedEventArgs e)
+		private void logToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Environment.Exit(0);
+			Logs logs = new Logs();
+			logs.Show();
 		}
+
+
 
 		/*
 		 * Проверка на наличие похожего логина
