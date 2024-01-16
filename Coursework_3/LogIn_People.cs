@@ -336,9 +336,30 @@ namespace Coursework_3
 
 		private void AttachImgBtn_Click(object sender, EventArgs e)
 		{
-			LoadIImg load_Img = new LoadIImg();
+			LoadIImg load_Img = new LoadIImg() { key = 1 };
 			load_Img.Show();
 			this.Close();
+		}
+
+		private void DeleteImgBtn_Click(object sender, EventArgs e)
+		{
+			pictureBox.Image = Properties.Resources.Image;
+		}
+
+		private void pictureBoxShowing_Click(object sender, EventArgs e)
+		{
+			pictureBoxHide.Visible = true;
+			pictureBoxShowin.Visible = false;
+			Password_Field.UseSystemPasswordChar = true;
+			Repeat_Password_Field.UseSystemPasswordChar = true;
+		}
+
+		private void pictureBoxHide_Click(object sender, EventArgs e)
+		{
+			pictureBoxShowin.Visible = true;
+			pictureBoxHide.Visible = false;
+			Password_Field.UseSystemPasswordChar = false;
+			Repeat_Password_Field.UseSystemPasswordChar = false;
 		}
 	}
 }

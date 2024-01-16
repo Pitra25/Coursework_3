@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Coursework_3
 {
@@ -17,32 +18,49 @@ namespace Coursework_3
 		{
 			InitializeComponent();
 			this.StartPosition = FormStartPosition.CenterScreen;
-			ConnectionTest();
-			
 		}
 
-		private void ConnectionTest()
+			/*
+			 *	Переписать !!!!
+			 */
+
+		private bool ConnectionTest()
 		{
-			try
-			{
+			try{
 				MySqlConnection Connection = new MySqlConnection("server=localhost;port=3306;username=User;password=User;database=BDCoursework");
 
 				if (Connection.State == ConnectionState.Closed)
 					Connection.Open();
+				Connection.Close();
+				return StartProtect(true);
+			}
+			catch{
+				return StartProtect(false);
+			}
+		}
 
-			}
-			catch
+		private bool StartProtect(bool text)
+		{
+			if (text == true)
 			{
-				MessageBox.Show("Отсутствует подключение к БД.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				HomForm homForm = new HomForm();
+				homForm.Show();
+				this.Hide();
+				timer.Stop();
 			}
+			else if (text == false)
+			{
+				timer.Stop();
+				MessageBox.Show("Отсутствует подключение к БД.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				System.Environment.Exit(0);
+			} 
+			return false;
 		}
 
 		private void timer_Tick(object sender, EventArgs e)
 		{
-			HomForm homForm = new HomForm();
-			homForm.Show();
-			this.Hide();
-			timer.Stop();	
+			Console.WriteLine("Stop timer");
+			ConnectionTest();
 		}
 	}
 }

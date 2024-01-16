@@ -52,16 +52,6 @@ namespace Coursework_3
 				*/
 				this.dataGridViewEmployee.Columns[0].Width = 30;
 				this.dataGridViewEmployee.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-				if (dataGridViewEmployee.Columns.Count <= 4)
-				{
-					dataGridViewEmployee.Columns.Add(new DataGridViewButtonColumn()
-					{
-						Text = "Say Hi",
-						UseColumnTextForButtonValue = true,
-						AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-					});
-				}
 			}
 			catch (Exception ex)
 			{
@@ -92,16 +82,6 @@ namespace Coursework_3
 				*/
 				this.dataGridViewUsers.Columns[0].Width = 25;
 				this.dataGridViewUsers.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-				if (dataGridViewUsers.Columns.Count <= 4)
-				{
-					dataGridViewUsers.Columns.Add(new DataGridViewButtonColumn()
-					{
-						Text = "Say Hi",
-						UseColumnTextForButtonValue = true,
-						AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-					});
-				}
 			}
 			catch (Exception ex)
 			{
@@ -115,7 +95,7 @@ namespace Coursework_3
 		{
 			int id = Convert.ToInt32(dataGridViewEmployee[1, RowIndex].Value.ToString());
 			
-			Console.WriteLine($"ClickHandler {id}");
+			Console.WriteLine("ClickHandler {1}", id);
 
 			db.OpenConnection();
 				command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
@@ -202,16 +182,6 @@ namespace Coursework_3
 
 			this.dataGridViewEmployee.Columns[0].Width = 30;
 			this.dataGridViewEmployee.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-			if (dataGridViewEmployee.Columns.Count <= 4)
-			{
-				dataGridViewEmployee.Columns.Add(new DataGridViewButtonColumn()
-				{
-					Text = "Delete",
-					UseColumnTextForButtonValue = true,
-					AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-				});
-			}
 		}
 
 		private void Locate_brn_User_Click(object sender, EventArgs e)
@@ -285,15 +255,6 @@ namespace Coursework_3
 			this.dataGridViewEmployee.Columns[0].Width = 30;
 			this.dataGridViewEmployee.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-			if (dataGridViewEmployee.Columns.Count <= 4)
-			{
-				dataGridViewEmployee.Columns.Add(new DataGridViewButtonColumn()
-				{
-					Text = "Delete",
-					UseColumnTextForButtonValue = true,
-					AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-				});
-			}
 		}
 
 		private void textBox_TextChanged(object sender, EventArgs e)
@@ -301,6 +262,51 @@ namespace Coursework_3
 			Function_Loading_Database_User();
 			Function_Loading_Database_Employee(); ;
 		}
+
+		private void DeleteEmployeeBtn_Click(object sender, EventArgs e)
+		{
+			if (textBoxID.Text == "")
+			{
+				MessageBox.Show("Поле id не заполнено.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				return;
+			}
+
+			db.OpenConnectionAdm();
+			command = new MySqlCommand("DELETE FROM `Employee` WHERE `id` = @idDele", db.getConnectionAdm());
+			command.Parameters.Add("@idDele", MySqlDbType.VarChar).Value = textBoxID.Text;
+			command.ExecuteNonQuery();
+			dataTable = new DataTable();
+
+			adapter = new MySqlDataAdapter(command);
+			adapter.Fill(dataTable);
+
+			db.CloseConnectionAdm();
+
+			Function_Loading_Database_Employee();
+		}
+
+		private void DeleteUsersBtn_Click(object sender, EventArgs e)
+		{
+			if (UserIdTB.Text == "")
+			{
+				MessageBox.Show("Поле id не заполнено.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				return;
+			}
+
+			db.OpenConnectionAdm();
+			command = new MySqlCommand("DELETE FROM `Users` WHERE `id` = @idDele", db.getConnectionAdm());
+			command.Parameters.Add("@idDele", MySqlDbType.VarChar).Value = UserIdTB.Text;
+			command.ExecuteNonQuery();
+			dataTable = new DataTable();
+
+			adapter = new MySqlDataAdapter(command);
+			adapter.Fill(dataTable);
+
+			db.CloseConnectionAdm();
+
+			Function_Loading_Database_User();
+		}
+
 
 
 		/*private void DeletionBar()

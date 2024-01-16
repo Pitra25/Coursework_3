@@ -43,12 +43,15 @@
 			this.label11 = new System.Windows.Forms.Label();
 			this.Password_Field = new System.Windows.Forms.TextBox();
 			this.panel4 = new System.Windows.Forms.Panel();
+			this.pictureBoxShowin = new System.Windows.Forms.PictureBox();
+			this.pictureBoxHide = new System.Windows.Forms.PictureBox();
 			this.Repeat_Password_Field = new System.Windows.Forms.TextBox();
 			this.label16 = new System.Windows.Forms.Label();
 			this.panel5 = new System.Windows.Forms.Panel();
 			this.EducatorCheckBox = new System.Windows.Forms.CheckBox();
 			this.StudentCheckBox = new System.Windows.Forms.CheckBox();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.DeliteImgBtn = new System.Windows.Forms.Button();
 			this.label12 = new System.Windows.Forms.Label();
 			this.Email_Field = new System.Windows.Forms.TextBox();
 			this.pictureBox = new System.Windows.Forms.PictureBox();
@@ -63,6 +66,8 @@
 			this.dataGridView2 = new System.Windows.Forms.DataGridView();
 			this.timer_UpdatePictureBox = new System.Windows.Forms.Timer(this.components);
 			this.panel4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowin)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxHide)).BeginInit();
 			this.panel5.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -80,7 +85,7 @@
 			this.Registration_btn.Location = new System.Drawing.Point(368, 307);
 			this.Registration_btn.Name = "Registration_btn";
 			this.Registration_btn.Size = new System.Drawing.Size(194, 47);
-			this.Registration_btn.TabIndex = 20;
+			this.Registration_btn.TabIndex = 13;
 			this.Registration_btn.Text = "Зарегистрировать";
 			this.Registration_btn.UseVisualStyleBackColor = true;
 			this.Registration_btn.Click += new System.EventHandler(this.RegistrationBtn_Click);
@@ -92,7 +97,7 @@
 			this.Name_Field.Location = new System.Drawing.Point(7, 27);
 			this.Name_Field.Name = "Name_Field";
 			this.Name_Field.Size = new System.Drawing.Size(141, 25);
-			this.Name_Field.TabIndex = 21;
+			this.Name_Field.TabIndex = 1;
 			// 
 			// label1
 			// 
@@ -123,7 +128,7 @@
 			this.LastName_Field.Location = new System.Drawing.Point(6, 79);
 			this.LastName_Field.Name = "LastName_Field";
 			this.LastName_Field.Size = new System.Drawing.Size(141, 25);
-			this.LastName_Field.TabIndex = 25;
+			this.LastName_Field.TabIndex = 2;
 			// 
 			// label3
 			// 
@@ -143,7 +148,7 @@
 			this.Patronymic_Field.Location = new System.Drawing.Point(6, 133);
 			this.Patronymic_Field.Name = "Patronymic_Field";
 			this.Patronymic_Field.Size = new System.Drawing.Size(141, 25);
-			this.Patronymic_Field.TabIndex = 27;
+			this.Patronymic_Field.TabIndex = 3;
 			// 
 			// label4
 			// 
@@ -163,7 +168,7 @@
 			this.Position_Field.Location = new System.Drawing.Point(6, 188);
 			this.Position_Field.Name = "Position_Field";
 			this.Position_Field.Size = new System.Drawing.Size(141, 25);
-			this.Position_Field.TabIndex = 29;
+			this.Position_Field.TabIndex = 4;
 			// 
 			// label10
 			// 
@@ -183,7 +188,7 @@
 			this.Login_Field.Location = new System.Drawing.Point(7, 27);
 			this.Login_Field.Name = "Login_Field";
 			this.Login_Field.Size = new System.Drawing.Size(141, 25);
-			this.Login_Field.TabIndex = 41;
+			this.Login_Field.TabIndex = 5;
 			// 
 			// label11
 			// 
@@ -203,10 +208,13 @@
 			this.Password_Field.Location = new System.Drawing.Point(159, 27);
 			this.Password_Field.Name = "Password_Field";
 			this.Password_Field.Size = new System.Drawing.Size(141, 25);
-			this.Password_Field.TabIndex = 43;
+			this.Password_Field.TabIndex = 6;
+			this.Password_Field.UseSystemPasswordChar = true;
 			// 
 			// panel4
 			// 
+			this.panel4.Controls.Add(this.pictureBoxShowin);
+			this.panel4.Controls.Add(this.pictureBoxHide);
 			this.panel4.Controls.Add(this.Repeat_Password_Field);
 			this.panel4.Controls.Add(this.label16);
 			this.panel4.Controls.Add(this.label10);
@@ -218,6 +226,37 @@
 			this.panel4.Size = new System.Drawing.Size(303, 110);
 			this.panel4.TabIndex = 58;
 			// 
+			// pictureBoxShowin
+			// 
+			this.pictureBoxShowin.BackColor = System.Drawing.Color.White;
+			this.pictureBoxShowin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.pictureBoxShowin.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.pictureBoxShowin.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBoxShowin.Image = global::Coursework_3.Properties.Resources.eye;
+			this.pictureBoxShowin.Location = new System.Drawing.Point(119, 73);
+			this.pictureBoxShowin.Name = "pictureBoxShowin";
+			this.pictureBoxShowin.Size = new System.Drawing.Size(26, 27);
+			this.pictureBoxShowin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBoxShowin.TabIndex = 48;
+			this.pictureBoxShowin.TabStop = false;
+			this.pictureBoxShowin.Visible = false;
+			this.pictureBoxShowin.Click += new System.EventHandler(this.pictureBoxShowing_Click);
+			// 
+			// pictureBoxHide
+			// 
+			this.pictureBoxHide.BackColor = System.Drawing.Color.White;
+			this.pictureBoxHide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.pictureBoxHide.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.pictureBoxHide.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBoxHide.Image = global::Coursework_3.Properties.Resources.hide;
+			this.pictureBoxHide.Location = new System.Drawing.Point(119, 73);
+			this.pictureBoxHide.Name = "pictureBoxHide";
+			this.pictureBoxHide.Size = new System.Drawing.Size(26, 27);
+			this.pictureBoxHide.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBoxHide.TabIndex = 47;
+			this.pictureBoxHide.TabStop = false;
+			this.pictureBoxHide.Click += new System.EventHandler(this.pictureBoxHide_Click);
+			// 
 			// Repeat_Password_Field
 			// 
 			this.Repeat_Password_Field.BackColor = System.Drawing.Color.Silver;
@@ -225,7 +264,8 @@
 			this.Repeat_Password_Field.Location = new System.Drawing.Point(159, 75);
 			this.Repeat_Password_Field.Name = "Repeat_Password_Field";
 			this.Repeat_Password_Field.Size = new System.Drawing.Size(141, 25);
-			this.Repeat_Password_Field.TabIndex = 45;
+			this.Repeat_Password_Field.TabIndex = 7;
+			this.Repeat_Password_Field.UseSystemPasswordChar = true;
 			// 
 			// label16
 			// 
@@ -261,7 +301,7 @@
 			this.EducatorCheckBox.Location = new System.Drawing.Point(368, 239);
 			this.EducatorCheckBox.Name = "EducatorCheckBox";
 			this.EducatorCheckBox.Size = new System.Drawing.Size(139, 29);
-			this.EducatorCheckBox.TabIndex = 60;
+			this.EducatorCheckBox.TabIndex = 11;
 			this.EducatorCheckBox.Text = "Сотрудник";
 			this.EducatorCheckBox.UseVisualStyleBackColor = true;
 			this.EducatorCheckBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EducatorCheckBox_MouseClick);
@@ -274,13 +314,14 @@
 			this.StudentCheckBox.Location = new System.Drawing.Point(368, 272);
 			this.StudentCheckBox.Name = "StudentCheckBox";
 			this.StudentCheckBox.Size = new System.Drawing.Size(175, 29);
-			this.StudentCheckBox.TabIndex = 61;
+			this.StudentCheckBox.TabIndex = 12;
 			this.StudentCheckBox.Text = "Пользователь";
 			this.StudentCheckBox.UseVisualStyleBackColor = true;
 			this.StudentCheckBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.StudentCheckBox_MouseClick);
 			// 
 			// panel2
 			// 
+			this.panel2.Controls.Add(this.DeliteImgBtn);
 			this.panel2.Controls.Add(this.label12);
 			this.panel2.Controls.Add(this.Email_Field);
 			this.panel2.Controls.Add(this.pictureBox);
@@ -295,6 +336,16 @@
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(381, 221);
 			this.panel2.TabIndex = 56;
+			// 
+			// DeliteImgBtn
+			// 
+			this.DeliteImgBtn.Location = new System.Drawing.Point(232, 179);
+			this.DeliteImgBtn.Name = "DeliteImgBtn";
+			this.DeliteImgBtn.Size = new System.Drawing.Size(75, 23);
+			this.DeliteImgBtn.TabIndex = 13;
+			this.DeliteImgBtn.Text = "Сброс";
+			this.DeliteImgBtn.UseVisualStyleBackColor = true;
+			this.DeliteImgBtn.Click += new System.EventHandler(this.DeleteImgBtn_Click);
 			// 
 			// label12
 			// 
@@ -314,14 +365,15 @@
 			this.Email_Field.Location = new System.Drawing.Point(16, 188);
 			this.Email_Field.Name = "Email_Field";
 			this.Email_Field.Size = new System.Drawing.Size(141, 25);
-			this.Email_Field.TabIndex = 35;
+			this.Email_Field.TabIndex = 10;
 			// 
 			// pictureBox
 			// 
-			this.pictureBox.BackColor = System.Drawing.Color.DarkGray;
+			this.pictureBox.BackColor = System.Drawing.Color.White;
 			this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.pictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox.Image = global::Coursework_3.Properties.Resources.Image;
 			this.pictureBox.Location = new System.Drawing.Point(174, 28);
 			this.pictureBox.Name = "pictureBox";
 			this.pictureBox.Size = new System.Drawing.Size(193, 136);
@@ -359,7 +411,7 @@
 			this.Series_Field.Location = new System.Drawing.Point(16, 133);
 			this.Series_Field.Name = "Series_Field";
 			this.Series_Field.Size = new System.Drawing.Size(141, 25);
-			this.Series_Field.TabIndex = 29;
+			this.Series_Field.TabIndex = 9;
 			// 
 			// label6
 			// 
@@ -379,7 +431,7 @@
 			this.Number_Field.Location = new System.Drawing.Point(16, 79);
 			this.Number_Field.Name = "Number_Field";
 			this.Number_Field.Size = new System.Drawing.Size(141, 25);
-			this.Number_Field.TabIndex = 27;
+			this.Number_Field.TabIndex = 8;
 			// 
 			// label5
 			// 
@@ -399,7 +451,7 @@
 			this.Nationality_Field.Location = new System.Drawing.Point(16, 27);
 			this.Nationality_Field.Name = "Nationality_Field";
 			this.Nationality_Field.Size = new System.Drawing.Size(141, 25);
-			this.Nationality_Field.TabIndex = 25;
+			this.Nationality_Field.TabIndex = 7;
 			// 
 			// dataGridView1
 			// 
@@ -438,6 +490,8 @@
 			this.Text = "Добавление нового пользователя/сотрудника";
 			this.panel4.ResumeLayout(false);
 			this.panel4.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowin)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxHide)).EndInit();
 			this.panel5.ResumeLayout(false);
 			this.panel5.PerformLayout();
 			this.panel2.ResumeLayout(false);
@@ -484,5 +538,8 @@
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.DataGridView dataGridView2;
 		private System.Windows.Forms.Timer timer_UpdatePictureBox;
+		private System.Windows.Forms.Button DeliteImgBtn;
+		public System.Windows.Forms.PictureBox pictureBoxShowin;
+		public System.Windows.Forms.PictureBox pictureBoxHide;
 	}
 }

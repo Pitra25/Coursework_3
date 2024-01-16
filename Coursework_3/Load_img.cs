@@ -20,6 +20,8 @@ namespace Coursework_3
 			this.StartPosition = FormStartPosition.CenterScreen;
 		}
 
+		public byte key;
+
 		private void pictureBox_Click(object sender, EventArgs e)
 		{
 			// Показать диалог открытия файла. Если пользователь нажимает кнопку OK, то загружается рисунок.
@@ -30,12 +32,26 @@ namespace Coursework_3
 
 		private void close_Click()
 		{
-			LogIn_People logIn_People = new LogIn_People();
-			if (pictureBox.Image != null)
-				if (MessageBox.Show("Сохранить изображение?", "Сохранить?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-					logIn_People.pictureBox.Image = pictureBox.Image;
-			this.Hide();
-			logIn_People.Show();
+			if (key == 1)
+			{
+				LogIn_People logIn_People = new LogIn_People();
+				if (pictureBox.Image != null)
+					if (MessageBox.Show("Сохранить изображение?", "Сохранить?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+						logIn_People.pictureBox.Image = pictureBox.Image;
+				this.Hide();
+				logIn_People.Show();
+			}
+			else if (key == 2)
+			{
+				NewBooks newBooks = new NewBooks();
+				if (pictureBox.Image != null)
+					if (MessageBox.Show("Сохранить изображение?", "Сохранить?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+						newBooks.pictureBox.Image = pictureBox.Image;
+				this.Hide();
+				newBooks.Show();
+			}
+			else
+				return;
 		}
 
 		private void LoadIImg_FormClosing(object sender, FormClosingEventArgs e)

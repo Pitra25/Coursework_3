@@ -79,6 +79,7 @@
 			// Img_Book
 			// 
 			this.Img_Book.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Img_Book.Image = global::Coursework_3.Properties.Resources.Image;
 			this.Img_Book.Location = new System.Drawing.Point(3, 3);
 			this.Img_Book.Name = "Img_Book";
 			this.Img_Book.Size = new System.Drawing.Size(256, 392);

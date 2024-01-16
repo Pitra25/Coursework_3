@@ -62,7 +62,7 @@ namespace Coursework_3
 				if (dataTable.Rows.Count > 0)
 				{
 					HomForm hom = new HomForm();
-					if(IsUpper_string(login) == true)
+					if(login == "ADMIN")
 					{
 						MessageBox.Show($"С возвращение if {login}.", $"{login}", 
 							MessageBoxButtons.OK, MessageBoxIcon.Asterisk);

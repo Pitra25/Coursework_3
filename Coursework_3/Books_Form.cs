@@ -120,7 +120,7 @@ namespace Coursework_3
 			try
 			{
 				db.OpenConnection();
-				command = new MySqlCommand("SELECT `Name`,`Avtor`,`About_author`,`About_book`,`availability` " +
+				command = new MySqlCommand("SELECT `Name`,`Avtar`,`About_author`,`About_book`,`availability` " +
 					"FROM `Books` WHERE `id` = @id_Img", db.getConnection());
 				command.Parameters.Add("@id_Img", MySqlDbType.VarChar).Value = id_cards;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,19 @@ namespace Coursework_3
 		public Schedule()
 		{
 			InitializeComponent();
+		}
+
+		static BD_Connection db = new BD_Connection();
+		DataTable dataTable = new DataTable();
+		MySqlDataAdapter adapter;
+		MySqlCommand command;
+		DataSet dataSet = new DataSet();
+
+		private void Schedule_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			HomForm homForm = new HomForm();
+			homForm.Show();
+			this.Hide();
 		}
 	}
 }
