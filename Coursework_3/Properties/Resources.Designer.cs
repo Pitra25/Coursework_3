@@ -83,9 +83,9 @@ namespace Coursework_3.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Close_darck {
+        internal static System.Drawing.Bitmap books_Library_creative_icon_fl1 {
             get {
-                object obj = ResourceManager.GetObject("Close-darck", resourceCulture);
+                object obj = ResourceManager.GetObject("books_Library_creative_icon_fl1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Coursework_3.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap collapse {
+        internal static System.Drawing.Bitmap free_icon_eye {
             get {
-                object obj = ResourceManager.GetObject("collapse", resourceCulture);
+                object obj = ResourceManager.GetObject("free_icon_eye", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace Coursework_3.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cross_square {
+        internal static System.Drawing.Bitmap free_icon_hide {
             get {
-                object obj = ResourceManager.GetObject("cross-square", resourceCulture);
+                object obj = ResourceManager.GetObject("free_icon_hide", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,39 +113,9 @@ namespace Coursework_3.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap expand_window {
+        internal static System.Drawing.Bitmap Image_none {
             get {
-                object obj = ResourceManager.GetObject("expand-window", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap eye {
-            get {
-                object obj = ResourceManager.GetObject("eye", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap hide {
-            get {
-                object obj = ResourceManager.GetObject("hide", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Image {
-            get {
-                object obj = ResourceManager.GetObject("Image", resourceCulture);
+                object obj = ResourceManager.GetObject("Image_none", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +133,9 @@ namespace Coursework_3.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Library_circular_creative_icon {
+        internal static System.Drawing.Bitmap Library_book_circular_creative1 {
             get {
-                object obj = ResourceManager.GetObject("Library_circular_creative_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Library_book_circular_creative1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +143,19 @@ namespace Coursework_3.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Library_circular_creative_icon__1_ {
+        internal static System.Drawing.Bitmap Library_circular {
             get {
-                object obj = ResourceManager.GetObject("Library_circular_creative_icon (1)", resourceCulture);
+                object obj = ResourceManager.GetObject("Library_circular", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Library_circular_creative_icon {
+            get {
+                object obj = ResourceManager.GetObject("Library_circular_creative_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,6 +173,16 @@ namespace Coursework_3.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Library_circular_creative_icon__2_1 {
+            get {
+                object obj = ResourceManager.GetObject("Library_circular_creative_icon (2)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Library_circular_creative_icon__3_ {
             get {
                 object obj = ResourceManager.GetObject("Library_circular_creative_icon (3)", resourceCulture);
@@ -203,9 +193,9 @@ namespace Coursework_3.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap login {
+        internal static System.Drawing.Bitmap Library_circular_creative_icon__3_1 {
             get {
-                object obj = ResourceManager.GetObject("login", resourceCulture);
+                object obj = ResourceManager.GetObject("Library_circular_creative_icon (3)1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,19 +203,9 @@ namespace Coursework_3.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap password {
+        internal static System.Drawing.Bitmap Library_circular_creative_icon_Start {
             get {
-                object obj = ResourceManager.GetObject("password", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap stop_btn {
-            get {
-                object obj = ResourceManager.GetObject("stop-btn", resourceCulture);
+                object obj = ResourceManager.GetObject("Library_circular_creative_icon_Start", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -118,8 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="stop-btn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\interface\stop-btn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Image_none" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image_none.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="books_Library_creative_icon_fl1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\books_Library_creative_icon_fl.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="books_Library_creative_icon_fl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\books_Library_creative_icon_fl.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -127,46 +130,37 @@
   <data name="Library_circular_creative_icon (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Library_circular_creative_icon (3).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="password" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\login\pass\password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="beautiful_flat-style_logo_desi" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\beautiful_flat-style_logo_desi.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Library_circular_creative_icon (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Library_circular_creative_icon (2).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Close-darck" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\interface\Close-darck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Library_circular_creative_icon (2)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Library_circular_creative_icon (2).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cross-square" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\interface\cross-square.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Library_circular_creative_icon (3)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Library_circular_creative_icon (3).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="eye" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\login\pass\eye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="expand-window" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\interface\expand-window.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="hide" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\login\pass\hide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="collapse" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\interface\collapse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Library_circular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Library_circular_creative_icon.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Library_book_circular_creative" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Library_book_circular_creative.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Library_book_circular_creative1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Library_book_circular_creative.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Library_circular_creative_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Library_circular_creative_icon.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Library_circular_creative_icon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Library_circular_creative_icon (1).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Library_circular_creative_icon_Start" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Library_circular_creative_icon_Start.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\login\user\login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="free_icon_eye" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free_icon_eye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="free_icon_hide" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free_icon_hide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
